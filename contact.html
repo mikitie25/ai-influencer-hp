@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact｜株式会社AIインフルエンサー</title>
+<meta name="description" content="株式会社AIインフルエンサーへのお問い合わせ。SecureDev Suite の導入相談、受託開発のお見積り、システムの点検依頼を承ります。">
+<link rel="canonical" href="__SITE_URL__/contact.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社AIインフルエンサー">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="Contact｜株式会社AIインフルエンサー">
+<meta property="og:description" content="導入のご相談、受託開発のお見積り、システムの点検依頼を承ります。">
+<meta property="og:url" content="__SITE_URL__/contact.html">
+<meta property="og:image" content="__SITE_URL__/images/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1b1b4b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap hbar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="gnav" id="gnav">
+      <a href="index.html">Top</a>
+      <a href="about.html">About us</a>
+      <a href="service.html">Service</a>
+      <a href="securedev.html">SecureDev Suite</a>
+      <a href="development.html">受託開発</a>
+      <a class="nav-cta is-current" href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head hex-bg">
+  <div class="wrap">
+    <h1>Contact</h1>
+    <div class="ja">お問い合わせ</div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>お気軽にご相談ください。</h2>
+      <p class="desc">
+        SecureDev Suite の導入相談、受託開発のお見積り、現在お使いのシステムの点検依頼を承ります。
+        決まりきっていない段階のご相談でも構いません。まずは今の状況をお聞かせください。
+      </p>
+    </div>
+
+    <div class="form-wrap">
+      <form id="contactForm" novalidate>
+        <div class="f-row">
+          <span class="f-label">ご相談の種類 <span class="req">必須</span></span>
+          <div class="f-radio">
+            <label><input type="radio" name="kind" value="製品の導入"> 製品の導入（SecureDev Suite）</label>
+            <label><input type="radio" name="kind" value="受託開発"> 受託開発</label>
+            <label><input type="radio" name="kind" value="システムの点検"> システムの点検</label>
+            <label><input type="radio" name="kind" value="その他"> その他</label>
+          </div>
+          <p class="f-err" data-err="kind"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="company">会社名 <span class="req">必須</span></label>
+          <input type="text" id="company" name="company" autocomplete="organization" maxlength="100">
+          <p class="f-err" data-err="company"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="name">お名前 <span class="req">必須</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" maxlength="60">
+          <p class="f-err" data-err="name"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="email">メールアドレス <span class="req">必須</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" maxlength="200">
+          <p class="f-err" data-err="email"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="tel">電話番号 <span class="opt">任意</span></label>
+          <input type="tel" id="tel" name="tel" autocomplete="tel" maxlength="20">
+          <p class="f-err" data-err="tel"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="timing">ご希望の時期 <span class="opt">任意</span></label>
+          <input type="text" id="timing" name="timing" maxlength="60" placeholder="例：3か月以内／未定">
+          <p class="f-err" data-err="timing"></p>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="body">お問い合わせ内容 <span class="req">必須</span></label>
+          <textarea id="body" name="body" rows="7" maxlength="4000" placeholder="いまどんな作り方をしていて、何が気になっているか。分かる範囲で構いません。"></textarea>
+          <p class="f-err" data-err="body"></p>
+        </div>
+
+        <div class="f-hp" aria-hidden="true">
+          <label for="website">ここは入力しないでください</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="f-note">ご入力いただいた内容は、お問い合わせへの回答のみに使用いたします。</p>
+
+        <div class="f-submit">
+          <button type="submit" class="btn btn-p" id="submitBtn">この内容で送信する</button>
+        </div>
+
+        <div class="f-alert" id="formAlert" role="alert" hidden></div>
+      </form>
+
+      <div class="f-done" id="formDone" hidden>
+        <h3>送信しました。</h3>
+        <p>お問い合わせありがとうございます。内容を確認のうえ、ご返信いたします。</p>
+        <a class="btn btn-s" href="index.html">トップページへ戻る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Company Info</h2>
+      <div class="ja">連絡先</div>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr><th>会社名</th><td>株式会社AIインフルエンサー</td></tr>
+        <tr><th>所在地</th><td>〒550-0012 大阪府大阪市西区立売堀6-7-50 ルクレ阿波座レジデンス605</td></tr>
+        <tr><th>メール</th><td id="c-email"><span class="blank">（　　　　　　）</span></td></tr>
+        <tr><th>電話</th><td id="c-tel"><span class="blank">（　　　　　　）</span></td></tr>
+        <tr><th>受付時間</th><td id="c-hours"><span class="blank">（　　　　　　）</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>オンラインで30分ほどのご相談から。</h2>
+    <p>いまの作り方を見せていただければ、気になる点を整理してお返しします。</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form=document.getElementById('contactForm');
+  var done=document.getElementById('formDone');
+  var alertBox=document.getElementById('formAlert');
+  var btn=document.getElementById('submitBtn');
+  if(!form) return;
+
+  function clearErrors(){
+    alertBox.hidden=true; alertBox.textContent='';
+    Array.prototype.forEach.call(form.querySelectorAll('.f-err'),function(p){ p.textContent=''; });
+    Array.prototype.forEach.call(form.querySelectorAll('.is-invalid'),function(el){ el.classList.remove('is-invalid'); });
+  }
+  function setError(field,msg){
+    var p=form.querySelector('[data-err="'+field+'"]');
+    if(p) p.textContent=msg;
+    var el=form.querySelector('input[name="'+field+'"]:not([type=radio]), textarea[name="'+field+'"]');
+    if(el) el.classList.add('is-invalid');
+  }
+  function value(n){
+    var el=form.querySelector('[name="'+n+'"]:checked') || form.querySelector('[name="'+n+'"]');
+    return el ? el.value.trim() : '';
+  }
+  function checkLocally(d){
+    var e={};
+    if(!d.kind) e.kind='ご相談の種類をお選びください。';
+    if(!d.company) e.company='会社名をご入力ください。';
+    if(!d.name) e.name='お名前をご入力ください。';
+    if(!d.email) e.email='メールアドレスをご入力ください。';
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) e.email='メールアドレスの形式をご確認ください。';
+    if(d.tel && !/^[0-9+\-() ]{6,20}$/.test(d.tel)) e.tel='電話番号の形式をご確認ください。';
+    if(!d.body) e.body='お問い合わせ内容をご入力ください。';
+    return e;
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    clearErrors();
+
+    var d={
+      kind:value('kind'), company:value('company'), name:value('name'),
+      email:value('email'), tel:value('tel'), timing:value('timing'),
+      body:value('body'), website:value('website')
+    };
+
+    var errs=checkLocally(d);
+    var keys=Object.keys(errs);
+    if(keys.length){
+      keys.forEach(function(k){ setError(k,errs[k]); });
+      alertBox.hidden=false;
+      alertBox.textContent='入力内容をご確認ください。';
+      var first=form.querySelector('.is-invalid') || form.querySelector('[name="kind"]');
+      if(first) first.focus();
+      return;
+    }
+
+    btn.disabled=true; btn.textContent='送信しています…';
+
+    fetch('/api/contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(d)
+    }).then(function(r){ return r.json().then(function(j){ return {status:r.status, json:j}; }); })
+      .then(function(res){
+        if(res.status===200 && res.json.ok){
+          form.hidden=true; done.hidden=false;
+          done.scrollIntoView({behavior:'smooth',block:'center'});
+          return;
+        }
+        alertBox.hidden=false;
+        alertBox.textContent=(res.json.errors||['送信に失敗しました。']).join(' ');
+      })
+      .catch(function(){
+        alertBox.hidden=false;
+        alertBox.textContent='送信できませんでした。通信の状態をご確認のうえ、もう一度お試しください。';
+      })
+      .then(function(){
+        btn.disabled=false; btn.textContent='この内容で送信する';
+      });
+  });
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg2)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg2)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <div class="addr">〒550-0012 大阪府大阪市西区立売堀6-7-50 ルクレ阿波座レジデンス605</div>
+    <nav class="fnav">
+      <a href="index.html">Top</a><span>|</span>
+      <a href="about.html">About us</a><span>|</span>
+      <a href="service.html">Service</a><span>|</span>
+      <a href="securedev.html">SecureDev Suite</a><span>|</span>
+      <a href="development.html">受託開発</a><span>|</span>
+      <a href="contact.html">Contact</a><span>|</span>
+      <a href="privacy.html">プライバシーポリシー</a><span>|</span>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </nav>
+    <nav class="fnav fnav-sub">
+      <a href="privacy.html">プライバシーポリシー</a><span>|</span>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </nav>
+    <div class="copy">© 株式会社AIインフルエンサー All Rights Reserved.</div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="ページの先頭へ戻る">▲</button>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'), n=document.getElementById('gnav');
+  b.addEventListener('click',function(){
+    var o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!o));
+    b.setAttribute('aria-label',o?'メニューを開く':'メニューを閉じる');
+    n.classList.toggle('is-open',!o);
+    document.body.classList.toggle('is-menu-open',!o);
+  });
+  var t=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){ t.classList.toggle('is-show',window.scrollY>400); });
+  t.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社AIインフルエンサー｜セキュリティ管理ツール SecureDev Suite の開発・提供／受託開発</title>
+<meta name="description" content="株式会社AIインフルエンサーは、開発チームを持つ企業向けのセキュリティ管理ツール「SecureDev Suite」を自社開発・提供し、上場企業を含む法人からの受託開発を行っています。">
+<link rel="canonical" href="__SITE_URL__/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社AIインフルエンサー">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="株式会社AIインフルエンサー">
+<meta property="og:description" content="セキュリティ管理ツール SecureDev Suite の開発・提供と、上場企業を含む法人向けの受託開発を行っています。">
+<meta property="og:url" content="__SITE_URL__/">
+<meta property="og:image" content="__SITE_URL__/images/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1b1b4b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@400;500;700&family=Cinzel:wght@700;900&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Great+Vibes&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- トップ固有 ---- */
+.hero{
+  position:relative; overflow:hidden; padding:56px 0 84px;
+}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background-image:var(--hex); background-size:84px 150px; opacity:.6;
+}
+.hero > *{ position:relative; z-index:1; }
+.hero-copy{ text-align:center; max-width:52em; margin:0 auto 44px; }
+.hero-copy .eng{
+  font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800;
+  font-size:clamp(30px,6.4vw,58px); color:var(--navy); line-height:1.16; letter-spacing:.01em;
+}
+.hero-copy .eng em{
+  font-style:normal;
+  background:linear-gradient(100deg,var(--blue),var(--cyan));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero-copy .hero-h{
+  font-family:"Noto Sans JP",sans-serif;
+  font-size:clamp(15px,2.4vw,19px); color:var(--navy); font-weight:700;
+  margin-top:20px; line-height:1.8;
+}
+.hero-copy p{ margin-top:16px; color:var(--gray); font-size:14.5px; }
+.hero-copy .btn-row{ justify-content:center; margin-top:30px; }
+
+/* 六角形の事業図 */
+.honey{ --hw:clamp(98px,26vw,182px); display:flex; flex-direction:column; align-items:center; }
+.hrow{ display:flex; justify-content:center; gap:7px; }
+.hrow + .hrow{ margin-top:calc(var(--hw) * -0.29); }
+.hexc{
+  width:var(--hw); height:calc(var(--hw) * 1.1547); flex:none;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:#b9d6f1; text-decoration:none; display:block;
+}
+.hexc-in{
+  position:absolute; inset:1.5px;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:#fff; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:8px; transition:.25s;
+}
+.hexc{ position:relative; }
+.hexc-in span{
+  color:var(--navy); font-weight:700; line-height:1.35;
+  font-size:clamp(10px,2.3vw,14.5px);
+}
+a.hexc:hover .hexc-in{ background:#eaf4fd; }
+.hexc.is-core{ background:transparent; }
+.hexc.is-core .hexc-in{
+  inset:0; background:linear-gradient(135deg,var(--blue) 0%,var(--blue-2) 55%,var(--cyan) 100%);
+  flex-direction:column; gap:6px;
+}
+.hexc.is-core .hexc-in span{ color:#fff; font-size:clamp(10px,2.2vw,14px); }
+.hexc.is-core svg{ width:clamp(26px,6vw,42px); height:auto; }
+.hexc.is-lead{ background:linear-gradient(135deg,var(--blue),var(--cyan)); }
+.hexc.is-lead .hexc-in span{ color:var(--blue); }
+.honey-note{ margin-top:26px; text-align:center; font-size:12.5px; color:var(--gray); }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap hbar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="gnav" id="gnav">
+      <a class="is-current" href="index.html">Top</a>
+      <a href="about.html">About us</a>
+      <a href="service.html">Service</a>
+      <a href="securedev.html">SecureDev Suite</a>
+      <a href="development.html">受託開発</a>
+      <a class="nav-cta" href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== 表紙 ========== -->
+<div class="cover" id="cover">
+  <div class="cover-in">
+    <h1 class="cover-name f-cormorant">AI-INFLUENCER</h1>
+    <div class="cover-en">INC.</div>
+  </div>
+  <button class="cover-scroll" id="coverScroll" aria-label="本文へ進む">
+    <span>SCROLL</span>
+    <span class="bar" aria-hidden="true"></span>
+  </button>
+</div>
+
+<!-- ========== ヒーロー ========== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <div class="eng">AI × <em>SECURITY</em></div>
+      <h2 class="hero-h">速く作れる時代に、<br>「点検する」を仕組みで持つ。</h2>
+      <p>自社プロダクトの開発・提供と、法人向けの受託開発。</p>
+    </div>
+
+    <!-- 事業の六角形図 -->
+    <div class="honey reveal reveal-d1" aria-label="事業領域">
+      <div class="hrow">
+        <a class="hexc is-lead" href="securedev.html"><span class="hexc-in"><span>SecureDev<br>Suite</span></span></a>
+        <a class="hexc is-lead" href="development.html"><span class="hexc-in"><span>受託開発</span></span></a>
+      </div>
+      <div class="hrow">
+        <a class="hexc" href="service.html#branding"><span class="hexc-in"><span>企業<br>ブランディング</span></span></a>
+        <div class="hexc is-core">
+          <span class="hexc-in">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#ffffff"/><path d="M32 22 L44 44" stroke="#ffffff" stroke-width="3.5" fill="none"/></svg>
+            <span>AIインフルエンサー</span>
+          </span>
+        </div>
+        <a class="hexc" href="service.html#video"><span class="hexc-in"><span>動画制作</span></span></a>
+      </div>
+      <div class="hrow">
+        <a class="hexc" href="service.html#management"><span class="hexc-in"><span>マネジメント</span></span></a>
+        <a class="hexc" href="service.html#influencer"><span class="hexc-in"><span>AI<br>インフルエンサー</span></span></a>
+      </div>
+    </div>
+    <p class="honey-note reveal reveal-d2">上段の2つが、現在の主力事業です。六角形を押すと各ページへ進みます。</p>
+  </div>
+</div>
+
+<!-- ========== サービス ========== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Service</h2>
+      <div class="ja">事業内容</div>
+    </div>
+    <div class="cards">
+      <a class="card" href="securedev.html">
+        <div class="card-vis has-img v-securedev"><span>SECURITY<br>PLATFORM</span></div>
+        <div class="card-body">
+          <h3>セキュリティ管理ツールの開発・提供</h3>
+          <p>開発チームを持つ企業向けの自社プロダクト SecureDev Suite を開発し、クラウドサービスとして提供しています。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="development.html">
+        <div class="card-vis has-img v-development"><span>CONTRACT<br>DEVELOPMENT</span></div>
+        <div class="card-body">
+          <h3>受託開発</h3>
+          <p>上場企業を含む法人のお客さまから、Webアプリケーションや社内向けツールの開発をお引き受けしています。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#branding">
+        <div class="card-vis has-img v-branding"><span>BRANDING</span></div>
+        <div class="card-body">
+          <h3>企業ブランディング</h3>
+          <p>企業の見え方を整え、伝わる形にします。発信の設計から制作までを一貫して担当します。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#video">
+        <div class="card-vis has-img v-video"><span>VIDEO<br>PRODUCTION</span></div>
+        <div class="card-body">
+          <h3>動画制作</h3>
+          <p>企画から撮影・編集まで。目的に合わせた動画を制作します。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#management">
+        <div class="card-vis has-img v-management"><span>MANAGEMENT</span></div>
+        <div class="card-body">
+          <h3>マネジメント</h3>
+          <p>キャスティング、タレントマネジメントを行っています。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#influencer">
+        <div class="card-vis has-img v-influencer"><span>AI<br>INFLUENCER</span></div>
+        <div class="card-body">
+          <h3>AIインフルエンサー</h3>
+          <p>AIインフルエンサー、AIタレント、AIモデルを制作し、起用までをご相談いただけます。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== About 抜粋 ========== -->
+<section class="sec hex-soft">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>About us</h2>
+      <div class="ja">私達について</div>
+      <p class="desc">
+        新しいテクノロジーと価値観が生まれる新時代で、一人ひとりが美しく、健やかに生きる術を。
+      </p>
+    </div>
+    <div class="center btn-row">
+      <a class="btn btn-s" href="about.html">会社概要</a>
+      <a class="btn btn-s" href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 締め ========== -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>まずは、今の作り方を見せてください。</h2>
+    <p>製品の導入相談も、受託開発のご依頼も、こちらから承ります。オンラインで30分ほどのご相談から始められます。</p>
+    <a class="btn btn-w" href="contact.html">お問い合わせ</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg2)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg2)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <div class="addr">〒550-0012 大阪府大阪市西区立売堀6-7-50 ルクレ阿波座レジデンス605</div>
+    <nav class="fnav">
+      <a href="index.html">Top</a><span>|</span>
+      <a href="about.html">About us</a><span>|</span>
+      <a href="service.html">Service</a><span>|</span>
+      <a href="securedev.html">SecureDev Suite</a><span>|</span>
+      <a href="development.html">受託開発</a><span>|</span>
+      <a href="contact.html">Contact</a><span>|</span>
+      <a href="privacy.html">プライバシーポリシー</a><span>|</span>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </nav>
+    <nav class="fnav fnav-sub">
+      <a href="privacy.html">プライバシーポリシー</a><span>|</span>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </nav>
+    <div class="copy">© 株式会社AIインフルエンサー All Rights Reserved.</div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="ページの先頭へ戻る">▲</button>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'), n=document.getElementById('gnav');
+  b.addEventListener('click',function(){
+    var o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!o));
+    b.setAttribute('aria-label',o?'メニューを開く':'メニューを閉じる');
+    n.classList.toggle('is-open',!o);
+    document.body.classList.toggle('is-menu-open',!o);
+  });
+  /* 表紙から本文へ */
+  var cs=document.getElementById('coverScroll');
+  if(cs){
+    cs.addEventListener('click',function(){
+      var h=document.getElementById('cover');
+      window.scrollTo({top:h.offsetHeight,behavior:'smooth'});
+    });
+  }
+
+  /* 画面に入った要素を浮き出させる */
+  var targets=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && targets.length){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    },{ rootMargin:'0px 0px -12% 0px', threshold:.08 });
+    Array.prototype.forEach.call(targets,function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(targets,function(el){ el.classList.add('is-in'); });
+  }
+
+  var t=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){ t.classList.toggle('is-show',window.scrollY>400); });
+  t.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>
