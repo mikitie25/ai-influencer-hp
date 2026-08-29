@@ -918,7 +918,7 @@ a,button{ -webkit-tap-highlight-color:rgba(47,111,208,.18); }
 /* =========================================================
    お客様の声
    ========================================================= */
-.h-voice{ background-image:url("images/works-head.jpg"); }
+.h-voice{ background-image:url("images/voice-head.jpg"); }
 
 .voices{ display:flex; flex-direction:column; gap:26px; }
 .voice{
