@@ -3,1285 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOYAGE I ― 門番に挑む</title>
+<title>株式会社AIインフルエンサー｜セキュリティ管理ツール SecureDev Suite の開発・提供／受託開発</title>
+<meta name="description" content="株式会社AIインフルエンサーは、開発チームを持つ企業向けのセキュリティ管理ツール「SecureDev Suite」を自社開発・提供し、上場企業を含む法人からの受託開発を行っています。">
+<link rel="canonical" href="__SITE_URL__/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社AIインフルエンサー">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="株式会社AIインフルエンサー">
+<meta property="og:description" content="セキュリティ管理ツール SecureDev Suite の開発・提供と、上場企業を含む法人向けの受託開発を行っています。">
+<meta property="og:url" content="__SITE_URL__/">
+<meta property="og:image" content="__SITE_URL__/images/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1b1b4b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Cinzel:wght@600;700&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@400;500;700&family=Cinzel:wght@700;900&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Great+Vibes&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-  :root{
-    --parch:#e9d8b0; --parch-2:#e2cfa2; --edge:#b79a63;
-    --ink:#3a2a17; --ink-2:#5a4225; --ink-soft:#6f572f;
-    --sea:#123040; --sea-2:#1d4a5e; --foam:#5fa8c4;
-    --gold:#c08a24; --gold-lt:#f2d271; --gold-dp:#7c560f;
-    --blood:#a72e1b; --blood-lt:#ff6a44; --blood-dk:#6e1d10;
-    --bone:#e9ddc4;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{ font-family:"Shippori Mincho",serif; color:var(--ink); background:#1a120a; overflow-x:hidden; }
-  .hidden{ display:none !important; }
+/* ---- トップ固有 ---- */
+.hero{
+  position:relative; overflow:hidden; padding:56px 0 84px;
+}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background-image:var(--hex); background-size:84px 150px; opacity:.6;
+}
+.hero > *{ position:relative; z-index:1; }
+.hero-copy{ text-align:center; max-width:52em; margin:0 auto 44px; }
+.hero-copy .eng{
+  font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800;
+  font-size:clamp(30px,6.4vw,58px); color:var(--navy); line-height:1.16; letter-spacing:.01em;
+}
+.hero-copy .eng em{
+  font-style:normal;
+  background:linear-gradient(100deg,var(--blue),var(--cyan));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero-copy .hero-h{
+  font-family:"Noto Sans JP",sans-serif;
+  font-size:clamp(15px,2.4vw,19px); color:var(--navy); font-weight:700;
+  margin-top:20px; line-height:1.8;
+}
+.hero-copy p{ margin-top:16px; color:var(--gray); font-size:14.5px; }
+.hero-copy .btn-row{ justify-content:center; margin-top:30px; }
 
-  /* ============ 提出画面 ============ */
-  #screen-submit{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 14px;
-    background:radial-gradient(circle at 50% 0%, #2a1d0f, #150e07); }
-  .card{ width:100%; max-width:560px; position:relative;
-    background:radial-gradient(circle at 60% 35%, #ecdcb6, var(--parch) 60%, var(--parch-2) 100%);
-    border:1px solid var(--edge); border-radius:8px; padding:30px 26px 26px;
-    box-shadow:0 24px 60px rgba(0,0,0,.6), inset 0 0 80px rgba(150,110,50,.22); }
-  .eyebrow{ text-align:center; font-family:"Cinzel",serif; letter-spacing:.4em; font-size:11px; color:var(--gold-dp); text-transform:uppercase; }
-  h1{ text-align:center; font-family:"Pirata One",serif; font-weight:400; font-size:clamp(30px,7vw,46px); color:var(--ink); margin-top:8px; line-height:1.1; }
-  .sub{ text-align:center; font-size:14px; color:var(--ink-2); margin-top:8px; font-weight:600; }
-  .divider{ height:1px; margin:22px 8px; background:linear-gradient(90deg,transparent,var(--edge),transparent); }
-  .label{ font-weight:800; font-size:15px; color:var(--ink); margin:16px 0 8px; display:flex; align-items:center; gap:8px; }
-  .label .n{ width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 38% 34%,var(--gold-lt),var(--gold-dp));
-    color:#f6e9c8;font-family:"Pirata One",serif;font-size:15px;display:flex;align-items:center;justify-content:center; }
+/* 六角形の事業図 */
+.honey{ --hw:clamp(98px,26vw,182px); display:flex; flex-direction:column; align-items:center; }
+.hrow{ display:flex; justify-content:center; gap:7px; }
+.hrow + .hrow{ margin-top:calc(var(--hw) * -0.29); }
+.hexc{
+  width:var(--hw); height:calc(var(--hw) * 1.1547); flex:none;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:#b9d6f1; text-decoration:none; display:block;
+}
+.hexc-in{
+  position:absolute; inset:1.5px;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:#fff; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:8px; transition:.25s;
+}
+.hexc{ position:relative; }
+.hexc-in span{
+  color:var(--navy); font-weight:700; line-height:1.35;
+  font-size:clamp(10px,2.3vw,14.5px);
+}
+a.hexc:hover .hexc-in{ background:#eaf4fd; }
+.hexc.is-core{ background:transparent; }
+.hexc.is-core .hexc-in{
+  inset:0; background:linear-gradient(135deg,var(--blue) 0%,var(--blue-2) 55%,var(--cyan) 100%);
+  flex-direction:column; gap:6px;
+}
+.hexc.is-core .hexc-in span{ color:#fff; font-size:clamp(10px,2.2vw,14px); }
+.hexc.is-core svg{ width:clamp(26px,6vw,42px); height:auto; }
+.hexc.is-lead{ background:linear-gradient(135deg,var(--blue),var(--cyan)); }
+.hexc.is-lead .hexc-in span{ color:var(--blue); }
+.honey-note{ margin-top:26px; text-align:center; font-size:12.5px; color:var(--gray); }
 
-  .drop{ border:2px dashed var(--gold); border-radius:12px; background:rgba(200,160,70,.08);
-    padding:26px 16px; text-align:center; cursor:pointer; transition:background .15s, border-color .15s; }
-  .drop:hover,.drop.drag{ background:rgba(200,160,70,.18); border-color:var(--gold-dp); }
-  .drop .ic{ font-family:"Pirata One",serif; font-size:30px; color:var(--gold-dp); }
-  .drop .t{ font-weight:700; font-size:14px; margin-top:6px; color:var(--ink-2); }
-  .drop .d{ font-size:12px; color:var(--ink-soft); margin-top:3px; }
-  .preview{ margin-top:12px; text-align:center; }
-  .preview img{ max-width:100%; max-height:260px; border-radius:10px; border:1px solid var(--edge); box-shadow:0 6px 18px rgba(60,40,10,.3); }
-  .preview .fname{ font-size:12px; color:var(--ink-soft); margin-top:6px; }
-
-  textarea{ width:100%; min-height:96px; resize:vertical; font-family:"Shippori Mincho",serif; font-size:15px;
-    padding:12px 14px; border-radius:10px; border:1px solid var(--edge); background:rgba(255,250,235,.6); color:var(--ink); line-height:1.7; }
-  textarea:focus{ outline:none; border-color:var(--gold-dp); box-shadow:0 0 0 3px rgba(200,160,70,.2); }
-  .hint{ font-size:12px; color:var(--ink-soft); margin-top:6px; }
-
-  .btn-main{ width:100%; margin-top:22px; cursor:pointer; font-family:"Cinzel",serif; font-weight:700; font-size:17px; letter-spacing:.06em;
-    padding:16px; border-radius:10px; color:#2a1c05; border:1px solid var(--gold-dp);
-    background:linear-gradient(180deg,var(--gold-lt),var(--gold) 60%,var(--gold-dp));
-    box-shadow:0 4px 0 #4a3208,0 8px 18px rgba(0,0,0,.35); transition:transform .08s, box-shadow .08s, opacity .2s; }
-  .btn-main:hover{ transform:translateY(1px); }
-  .btn-main:active{ transform:translateY(4px); box-shadow:0 0 0 #4a3208; }
-  .btn-main:disabled{ opacity:.45; cursor:not-allowed; }
-  .err{ color:var(--blood); font-weight:700; font-size:13px; text-align:center; margin-top:12px; min-height:18px; }
-
-  /* ============ バトル画面 ============ */
-  #screen-battle{ position:fixed; inset:0; z-index:50; overflow:hidden; }
-  #sky{ position:absolute; inset:0;
-    background:#0a1622 center/cover no-repeat; }
-  #sky.shake{ animation:shake .16s ease; }
-  @keyframes shake{ 0%,100%{transform:translate(0,0)} 25%{transform:translate(-6px,3px)} 50%{transform:translate(5px,-3px)} 75%{transform:translate(-3px,2px)} }
-  #sky.flash::after{ content:""; position:absolute; inset:0; background:rgba(205,228,255,.5); animation:flashfade .4s ease forwards; }
-  @keyframes flashfade{ from{opacity:1} to{opacity:0} }
-  .darken{ position:absolute; inset:0; background:radial-gradient(circle at 50% 40%, transparent 30%, rgba(0,0,0,.55)); }
-  #boss{ position:absolute; bottom:0; left:50%; transform:translateX(-50%); height:70vh; max-height:640px;
-    filter:drop-shadow(0 8px 24px rgba(0,0,0,.7)); transition:opacity .8s, filter .8s, transform .5s; }
-  #boss.hit{ animation:bhit .2s ease; }
-  @keyframes bhit{ 0%{transform:translateX(-50%)} 30%{transform:translateX(calc(-50% - 12px)) rotate(-2deg)} 60%{transform:translateX(calc(-50% + 10px)) rotate(2deg)} 100%{transform:translateX(-50%)} }
-  #boss.floating{ animation:float 4s ease-in-out infinite; }
-  @keyframes float{ 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-10px)} }
-
-  .b-top{ position:absolute; top:5vh; width:100%; text-align:center; z-index:5; }
-  .b-top h2{ font-family:"Pirata One",serif; font-weight:400; font-size:clamp(28px,7vw,44px); color:var(--bone); text-shadow:0 2px 0 #000,0 0 22px rgba(120,200,220,.35); }
-  .b-top .name{ font-size:13px; color:#cfe2ea; margin-top:4px; text-shadow:0 1px 3px #000; }
-
-  .hpwrap{ position:absolute; bottom:16vh; left:50%; transform:translateX(-50%); width:min(600px,86vw); z-index:6; }
-  .hprow{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:6px; }
-  .hpname{ font-family:"Pirata One",serif; font-size:18px; color:var(--bone); text-shadow:0 1px 3px #000; }
-  .hpnum{ font-family:"Pirata One",serif; font-size:20px; color:var(--blood-lt); text-shadow:0 0 8px rgba(255,106,68,.5); }
-  .hpbar{ height:16px; border-radius:9px; background:#0c1a26; border:1px solid #2b4c63; overflow:hidden; box-shadow:inset 0 2px 6px rgba(0,0,0,.6); }
-  #hpfill{ height:100%; width:100%; border-radius:8px 0 0 8px; background:linear-gradient(180deg,var(--blood-lt),var(--blood) 45%,var(--blood-dk)); box-shadow:0 0 14px rgba(255,80,50,.5); transition:width .5s cubic-bezier(.5,0,.35,1); }
-  #status{ position:absolute; bottom:11vh; width:100%; text-align:center; z-index:6; font-family:"Cinzel",serif; letter-spacing:.14em; font-size:15px; color:#a9dcec; text-shadow:0 1px 3px #000; }
-  #status.flick{ animation:flick .9s steps(2) infinite; } @keyframes flick{ 50%{opacity:.4} }
-
-  #slashfx{ position:absolute; inset:0; z-index:7; pointer-events:none; overflow:hidden; }
-  .slash{ position:absolute; font-family:"Pirata One",serif; font-size:56px; color:var(--blood-lt); opacity:0; text-shadow:0 0 14px var(--blood-lt); }
-  .slash.go{ animation:slashPop .42s ease forwards; }
-  @keyframes slashPop{ 0%{opacity:0;transform:scale(.4) rotate(-24deg)} 40%{opacity:1;transform:scale(1.15) rotate(-8deg)} 100%{opacity:0;transform:scale(1.3)} }
-  .cft{ position:absolute; width:9px; height:14px; top:-20px; opacity:0; z-index:8; }
-
-  /* ===== 派手な勝利演出 ===== */
-  .bigflash{ position:absolute; inset:0; z-index:15; pointer-events:none; opacity:0;
-    background:radial-gradient(circle at 50% 45%, #fff, rgba(255,240,200,.6) 40%, transparent 75%);
-    animation:bigflashfade .55s ease forwards; }
-  @keyframes bigflashfade{ 0%{opacity:0} 14%{opacity:1} 100%{opacity:0} }
-  .bigslash{ position:absolute; z-index:16; left:-10%; top:44%; width:120%; height:9px; pointer-events:none; opacity:0;
-    background:linear-gradient(90deg,transparent,#fff,var(--gold-lt),#fff,transparent);
-    box-shadow:0 0 30px #fff,0 0 70px var(--gold-lt); animation:bigslashgo .4s ease forwards; }
-  @keyframes bigslashgo{ 0%{opacity:0;transform:rotate(-14deg) scaleX(.15)} 30%{opacity:1} 60%{opacity:1;transform:rotate(-14deg) scaleX(1)} 100%{opacity:0;transform:rotate(-14deg) scaleX(1.15)} }
-  #sky.bigshake{ animation:bigshake .5s ease; }
-  @keyframes bigshake{ 0%,100%{transform:translate(0,0)} 10%{transform:translate(-14px,8px)} 25%{transform:translate(13px,-9px)} 40%{transform:translate(-11px,6px)} 60%{transform:translate(9px,-6px)} 80%{transform:translate(-4px,3px)} }
-  .spark{ position:absolute; z-index:17; font-family:"Pirata One",serif; color:var(--gold-lt); pointer-events:none; opacity:0; text-shadow:0 0 12px var(--gold-lt); }
-  .spark.go{ animation:sparkpop .6s ease forwards; }
-  @keyframes sparkpop{ 0%{opacity:0;transform:scale(0)} 40%{opacity:1;transform:scale(1.3)} 100%{opacity:0;transform:scale(1.7)} }
-  #result.show .rhead.pass{ animation:headpop .55s cubic-bezier(.2,1.4,.4,1); }
-  @keyframes headpop{ 0%{transform:scale(.5);opacity:0} 60%{transform:scale(1.14)} 100%{transform:scale(1)} }
-
-  /* ===== お宝を積み込んだ（提出完了）演出 ===== */
-  /* 検分待ち画面：単元数が多い島（最大7単元）でも全部読めるようスクロール可にする */
-  #submitted{ position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center; padding:22px 14px;
-    overflow-y:auto; -webkit-overflow-scrolling:touch;
-    background:rgba(6,10,16,.72); backdrop-filter:blur(3px); }
-  /* 中身が短いときは中央、長いときは上から流れてスクロール（いいとこ取り） */
-  #submitted > *{ margin-top:auto; margin-bottom:auto; }
-  #submitted.show{ display:flex; animation:fadein .4s ease; }
-  @keyframes fadein{ from{opacity:0} to{opacity:1} }
-  .sub-card{ width:100%; max-width:520px; border-radius:16px; overflow:hidden; box-shadow:0 24px 70px rgba(0,0,0,.65);
-    background:radial-gradient(circle at 60% 15%, #ecdcb6, var(--parch) 70%, var(--parch-2)); border:1px solid var(--edge);
-    transform:translateY(16px) scale(.95); animation:cardpop .5s cubic-bezier(.2,1.25,.4,1) forwards; }
-  @keyframes cardpop{ to{ transform:none; } }
-  .sub-top{ background:linear-gradient(180deg,var(--sea-2),var(--sea)); padding:22px; text-align:center; }
-  .sub-top .eb{ font-family:"Cinzel",serif; letter-spacing:.34em; font-size:11px; color:#cfe2ea; }
-  .sub-top h3{ font-family:"Pirata One",serif; font-weight:400; font-size:30px; color:#f2e4c4; margin-top:6px; text-shadow:0 2px 0 rgba(0,0,0,.4); }
-  .sub-body{ padding:22px 24px 26px; text-align:center; }
-  .chest{ width:92px; height:92px; margin:0 auto 12px; display:block; filter:drop-shadow(0 4px 10px rgba(90,60,20,.4)); }
-  .sub-body p{ font-size:15.5px; color:var(--ink); line-height:1.95; font-weight:600; }
-  .sub-btn{ margin-top:20px; cursor:pointer; font-family:"Cinzel",serif; font-weight:700; font-size:15px; padding:14px 28px; border-radius:9px;
-    color:#2a1c05; border:1px solid var(--gold-dp); background:linear-gradient(180deg,var(--gold-lt),var(--gold) 60%,var(--gold-dp)); box-shadow:0 3px 0 #4a3208; }
-  .sub-btn:active{ transform:translateY(2px); box-shadow:0 0 0 #4a3208; }
-
-  /* ============ 結果オーバーレイ ============ */
-  /* 結果オーバーレイ：門番の判定（良かった点・足りない点・直し方）は長くなるのでスクロール可に */
-  #result{ position:absolute; inset:0; z-index:20; display:flex; align-items:center; justify-content:center; padding:20px 14px;
-    overflow-y:auto; -webkit-overflow-scrolling:touch;
-    background:rgba(6,10,16,.55); backdrop-filter:blur(2px); opacity:0; transition:opacity .5s; }
-  #result > *{ margin-top:auto; margin-bottom:auto; }
-  #result.show{ opacity:1; }
-  .rcard{ width:100%; max-width:520px; border-radius:14px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.6);
-    transform:translateY(14px) scale(.98); transition:transform .5s; }
-  #result.show .rcard{ transform:none; }
-  .rhead{ padding:18px 22px; text-align:center; font-family:"Pirata One",serif; font-size:30px; letter-spacing:.02em; }
-  .rhead.pass{ background:linear-gradient(180deg,var(--gold-lt),var(--gold)); color:#3a2405; }
-  .rhead.fail{ background:linear-gradient(180deg,var(--blood),var(--blood-dk)); color:#f3ded6; }
-  .rbody{ background:radial-gradient(circle at 60% 20%, #ecdcb6, var(--parch) 70%); padding:22px; }
-  .gline{ font-family:"Shippori Mincho",serif; font-weight:700; font-size:15.5px; color:var(--ink); line-height:1.9;
-    background:rgba(255,250,235,.6); border-left:4px solid var(--gold); border-radius:0 6px 6px 0; padding:14px 16px; }
-  .details{ margin-top:14px; }
-  .drow{ font-size:14px; color:var(--ink-2); margin:8px 0; line-height:1.7; }
-  .drow b{ color:var(--sea-2); }
-  .rbtns{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
-  .rbtn{ flex:1 1 0; min-width:150px; cursor:pointer; font-family:"Cinzel",serif; font-weight:700; font-size:15px; padding:14px;
-    border-radius:9px; border:1px solid var(--gold-dp); }
-  .rbtn.primary{ color:#2a1c05; background:linear-gradient(180deg,var(--gold-lt),var(--gold) 60%,var(--gold-dp)); box-shadow:0 3px 0 #4a3208; }
-  .rbtn.ghost{ color:var(--ink); background:rgba(255,250,235,.5); }
-  .rbtn:active{ transform:translateY(2px); }
-  .score{ text-align:center; font-family:"Cinzel",serif; font-size:12px; letter-spacing:.2em; color:var(--ink-soft); margin-top:12px; }
-  /* ===== 冒険マップ画面 ===== */
-  #screen-map{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:14px;
-    background:radial-gradient(circle at 50% 0%,#1a120a,#0b0805); }
-  #screen-map .mapwrap{ position:relative; width:100%; max-width:1120px; }
-  #screen-map .chart{ position:relative; width:100%; border-radius:8px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.75); }
-  #screen-map .chart img{ display:block; width:100%; }
-  #screen-map .corner{ position:absolute; top:10px; right:14px; z-index:6; font-family:"Cinzel",serif; letter-spacing:.28em; font-size:11px; color:#e7cf94; text-shadow:0 2px 4px #000; opacity:.85; }
-  #screen-map .mtitle{ position:absolute; top:10px; left:0; width:100%; text-align:center; z-index:6; pointer-events:none; }
-  #screen-map .mtitle .eb{ font-family:"Cinzel",serif; letter-spacing:.4em; font-size:10px; color:#e7cf94; text-shadow:0 2px 4px #000; }
-  #screen-map .mtitle h2{ font-family:"Pirata One",serif; font-weight:400; font-size:clamp(22px,4vw,34px); color:var(--bone,#f0e2c0); text-shadow:0 2px 0 #000,0 0 16px rgba(220,180,90,.4); }
-  .mnode{ position:absolute; width:min(3.6vw,38px); height:min(3.6vw,38px); transform:translate(-50%,-50%); cursor:pointer; z-index:4; display:flex; align-items:center; justify-content:center; }
-  .mnode .mglow{ position:absolute; inset:0; border-radius:50%; pointer-events:none; }
-  .mnode .micon{ font-size:min(2.4vw,22px); filter:drop-shadow(0 2px 4px #000); pointer-events:none; line-height:1; }
-  .mnode.current .mglow{ background:radial-gradient(circle,rgba(255,220,120,.65),transparent 66%); box-shadow:0 0 0 0 rgba(255,215,120,.6); animation:mpulse 1.5s ease-out infinite; }
-  @keyframes mpulse{ 0%{box-shadow:0 0 0 0 rgba(255,215,120,.55)} 100%{box-shadow:0 0 0 20px rgba(255,215,120,0)} }
-  .mnode.current .mhere{ position:absolute; bottom:104%; left:50%; transform:translateX(-50%); white-space:nowrap; font-family:"Cinzel",serif; font-size:10px; letter-spacing:.14em; color:#ffe9a8; background:rgba(140,20,10,.92); padding:3px 9px; border-radius:3px; text-shadow:0 1px 2px #000; }
-  .mnode.cleared .mglow{ background:radial-gradient(circle,rgba(255,220,120,.5),transparent 68%); animation:mbreathe 2.4s ease-in-out infinite; }
-  @keyframes mbreathe{ 0%,100%{opacity:.5} 50%{opacity:.95} }
-  .mnode.locked .mglow{ background:radial-gradient(circle,rgba(6,4,2,.55),rgba(6,4,2,.2) 60%,transparent 72%); }
-  .mnode.locked:hover{ animation:mshk .3s; } @keyframes mshk{ 0%,100%{transform:translate(-50%,-50%)} 25%{transform:translate(-53%,-50%)} 75%{transform:translate(-47%,-50%)} }
-  .mnode:hover .mglow{ transform:scale(1.12); }
-  .mtip{ position:absolute; bottom:110%; left:50%; transform:translateX(-50%); white-space:nowrap; opacity:0; pointer-events:none; transition:.15s; background:radial-gradient(circle at 50% 0%,#efdcac,#dcc082); color:#3a2a0f; border:1px solid #7c560f; border-radius:6px; padding:6px 12px; font-weight:800; font-size:13px; box-shadow:0 6px 16px rgba(0,0,0,.5); z-index:10; }
-  .mtip .v{ display:block; font-family:"Cinzel",serif; font-size:10px; letter-spacing:.1em; color:#7c560f; font-weight:600; }
-  .mnode:hover .mtip{ opacity:1; }
-  #map-panel{ position:absolute; left:50%; bottom:16px; transform:translateX(-50%) translateY(20px); opacity:0; transition:.3s; z-index:20; pointer-events:none; background:radial-gradient(circle at 60% 15%,#efdcac,#dcc082); border:1px solid #7c560f; border-radius:12px; padding:14px 20px; text-align:center; box-shadow:0 12px 34px rgba(0,0,0,.6); min-width:290px; }
-  #map-panel.show{ opacity:1; transform:translateX(-50%); pointer-events:auto; }
-  /* ★島の中の航海えらび（単元選択）★ */
-  #mp-voyages{ margin:10px 0 4px; max-height:44vh; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-  .mp-loading{ font-size:12.5px; color:#6b4f22; padding:8px 0; }
-  .mp-v{ width:100%; display:flex; align-items:center; gap:10px; text-align:left; cursor:pointer;
-    background:linear-gradient(180deg,#2a1d10,#1e150b); border:1px solid #7c560f; border-radius:9px;
-    padding:9px 11px; margin-bottom:6px; font-family:"Shippori Mincho",serif; color:#ecdfc4; transition:transform .1s, border-color .15s; }
-  .mp-v:hover{ border-color:#e8c56b; transform:translateY(-1px); }
-  .mp-v:active{ transform:translateY(1px); }
-  .mp-v.lk{ cursor:not-allowed; opacity:.5; background:#241d12; }
-  .mp-v.lk:hover{ transform:none; border-color:#7c560f; }
-  .mp-v-no{ font-family:"Cinzel",serif; font-weight:700; color:#c9a03b; min-width:34px; text-align:center; font-size:13px; }
-  .mp-v-name{ flex:1; font-weight:700; font-size:13.5px; line-height:1.35; }
-  .mp-v-sub{ display:block; font-weight:400; font-size:11px; color:#a89268; margin-top:1px; }
-  .mp-v-st{ font-size:12px; white-space:nowrap; }
-  @media (max-width:640px){
-    #mp-voyages{ max-height:40vh; }
-    .mp-v-name{ font-size:12.5px; }
-    .mp-v-sub{ font-size:10px; }
-  }
-  #map-panel .pn{ font-family:"Pirata One",serif; font-size:24px; color:#3a2a0f; }
-  #map-panel .pv{ font-family:"Cinzel",serif; font-size:11px; letter-spacing:.12em; color:#7c560f; margin-top:2px; }
-  #map-panel .pbtn{ margin-top:12px; cursor:pointer; font-family:"Cinzel",serif; font-weight:700; font-size:14px; padding:11px 24px; border-radius:8px; color:#2a1c05; border:1px solid #7c560f; background:linear-gradient(180deg,var(--gold-lt,#ffe07a),var(--gold,#e0a83a) 60%,var(--gold-dp,#7c560f)); box-shadow:0 3px 0 #4a3208; }
-  #map-panel .pbtn.lock{ background:#a89372; color:#3a2e18; box-shadow:0 3px 0 #5a4a2a; cursor:default; }
-  #map-panel .pbtn.pbtn-log{ margin-top:8px; background:transparent; color:#5a3d12; border:2px solid #7c560f; box-shadow:none; font-size:13px; padding:9px 20px; }
-  #map-panel .pbtn.pbtn-log:hover{ background:rgba(124,86,15,.14); }
-  #map-panel .pclose{ display:block; margin:8px auto 0; background:none; border:none; color:#7c560f; font-size:11px; text-decoration:underline; cursor:pointer; }
-
-  /* ===== ログアウトボタン（マップ左上） ===== */
-  #logoutBtn{ position:absolute; top:12px; left:12px; z-index:30; cursor:pointer;
-    display:flex; align-items:center; gap:7px; padding:6px 12px 6px 8px;
-    background:rgba(20,13,6,.72); border:1.5px solid rgba(201,154,59,.6); border-radius:22px;
-    box-shadow:0 3px 10px rgba(0,0,0,.4); backdrop-filter:blur(2px); }
-  #logoutBtn img{ width:30px; height:auto; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
-  #logoutBtn span{ font-family:"Shippori Mincho",serif; font-weight:700; font-size:12.5px; color:#e8c56b; }
-  #logoutBtn:hover{ background:rgba(30,20,10,.85); border-color:#e8c56b; }
-
-  /* ===== ログイン画面 ===== */
-  #screen-login{ position:fixed; inset:0; z-index:40; overflow:auto;
-    background:radial-gradient(circle at 50% 20%, #24384a, #0e1a24 70%); display:flex; align-items:center; justify-content:center; padding:24px 14px; }
-  .login-wrap{ width:100%; max-width:400px; }
-  .login-card{ background:linear-gradient(180deg,#241810,#1a1109); border:1.5px solid #7c560f; border-radius:14px;
-    padding:26px 24px 24px; box-shadow:0 14px 40px rgba(0,0,0,.55), inset 0 1px 0 rgba(201,154,59,.25); text-align:center; }
-  .login-emblem{ margin-bottom:8px; }
-  .login-emblem img{ width:70px; height:auto; filter:drop-shadow(0 3px 8px rgba(0,0,0,.5)); }
-  .login-eyebrow{ font-family:"Cinzel",serif; font-size:11px; letter-spacing:.25em; color:#c9a03b; }
-  .login-title{ font-family:"Shippori Mincho",serif; font-weight:800; color:#f0e2c0; font-size:22px; margin:6px 0 6px; }
-  .login-sub{ font-family:"Shippori Mincho",serif; color:#b7a67e; font-size:12.5px; line-height:1.7; margin:0 0 18px; }
-  .login-field{ text-align:left; margin-bottom:14px; }
-  .login-field label{ display:block; font-family:"Shippori Mincho",serif; font-size:12px; color:#c9a03b; margin-bottom:5px; }
-  .login-field input{ width:100%; box-sizing:border-box; padding:11px 13px; border-radius:8px;
-    border:1.5px solid rgba(201,154,59,.4); background:rgba(255,255,255,.06); color:#f0e2c0; font-size:15px; font-family:"Shippori Mincho",serif; }
-  .login-field input:focus{ outline:none; border-color:#c9a03b; background:rgba(255,255,255,.09); }
-  .login-err{ min-height:18px; color:#ec8a8a; font-size:12.5px; font-family:"Shippori Mincho",serif; margin-bottom:8px; }
-  .login-btn{ width:100%; cursor:pointer; font-family:"Cinzel",serif; font-weight:700; font-size:15px; letter-spacing:.04em;
-    color:#2a1a05; background:linear-gradient(180deg,#e8c56b,#c9982f); border:1.5px solid #7c560f; border-radius:9px; padding:13px;
-    box-shadow:0 4px 0 #7c560f; transition:transform .1s, box-shadow .1s; }
-  .login-btn:active{ transform:translateY(3px); box-shadow:0 1px 0 #7c560f; }
-  .login-btn:disabled{ opacity:.6; cursor:default; }
-  .login-line{ margin-top:20px; }
-  .login-line-divider{ display:flex; align-items:center; gap:10px; color:#8a7a58; font-family:"Shippori Mincho",serif; font-size:11px; margin-bottom:12px; }
-  .login-line-divider::before, .login-line-divider::after{ content:""; flex:1; height:1px; background:rgba(201,154,59,.3); }
-  .login-line-text{ font-family:"Shippori Mincho",serif; font-size:12px; color:#b7a67e; line-height:1.7; margin:0 0 14px; }
-  .login-line-btn{ display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none;
-    font-family:"Shippori Mincho",serif; font-weight:700; font-size:14px; color:#eafbe6;
-    background:linear-gradient(180deg,#3aa96a,#2c8452); border:1.5px solid #1f6a3e; border-radius:9px; padding:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.35); transition:transform .1s; }
-  .login-line-btn:active{ transform:translateY(2px); }
-  .login-line-btn .line-ico{ font-size:16px; }
-
-  /* ===== STAGE進捗表（検分待ち画面） ===== */
-  .vlog-flag{ text-align:center; margin:-4px 0 10px; }
-  .vlog-flag img{ width:min(16%,72px); height:auto; filter:drop-shadow(0 4px 12px rgba(0,0,0,.55)); }
-  .voyage-log{ width:100%; max-width:420px; margin:22px auto 8px; text-align:left;
-    background:linear-gradient(180deg,#241810,#1a1109); border:1.5px solid #7c560f; border-radius:12px; padding:16px 15px 14px;
-    box-shadow:0 8px 26px rgba(0,0,0,.45), inset 0 1px 0 rgba(201,154,59,.25); }
-  .vlog-head{ display:flex; align-items:baseline; gap:10px; border-bottom:1px solid rgba(201,154,59,.3); padding-bottom:8px; margin-bottom:10px; }
-  .vlog-stage{ font-family:"Cinzel",serif; font-weight:700; letter-spacing:.15em; color:#e8c56b; font-size:13px; }
-  .vlog-island{ font-family:"Shippori Mincho",serif; color:#d9c39a; font-size:14px; }
-  .vlog-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
-  .vlog-item{ display:flex; align-items:center; gap:10px; padding:9px 11px; border-radius:7px; background:rgba(255,255,255,.04); border:1px solid rgba(201,154,59,.12); }
-  .vlog-no{ font-family:"Cinzel",serif; font-weight:700; font-size:12px; width:26px; text-align:center; color:#c9a03b; flex:0 0 auto; }
-  .vlog-name{ flex:1; font-family:"Shippori Mincho",serif; font-size:13.5px; color:#f0e2c0; }
-  .vlog-name .vlog-sub{ display:block; font-size:11px; color:#a8946a; margin-top:2px; font-weight:400; }
-  .vlog-badge{ font-family:"Cinzel",serif; font-size:11px; font-weight:700; letter-spacing:.05em; padding:3px 8px; border-radius:20px; white-space:nowrap; flex:0 0 auto; }
-  .b-clear{ background:linear-gradient(180deg,#e8c56b,#c9982f); color:#2a1a05; }
-  .b-wait{ background:rgba(120,170,255,.18); color:#bcd4ff; border:1px solid rgba(120,170,255,.5); animation:vlogPulse 1.6s ease-in-out infinite; }
-  .b-lock{ background:rgba(255,255,255,.06); color:#8a7a58; }
-  .b-open{ background:linear-gradient(180deg,#c98a3a,#9a6420); color:#fff2d8; border:1px solid rgba(233,197,107,.5); }
-  .b-reject{ background:rgba(176,62,38,.22); color:#f0a890; border:1px solid rgba(176,62,38,.6); }
-  .vlog-item.open .vlog-name{ color:#f0e2c0; }
-  .vlog-item.rejected{ background:rgba(176,62,38,.1); border:1px solid rgba(176,62,38,.3); }
-  .vlog-comment{ list-style:none; margin:-2px 0 2px; padding:9px 12px; background:rgba(176,62,38,.12); border:1px solid rgba(176,62,38,.3); border-radius:7px; font-family:"Shippori Mincho",serif; font-size:12.5px; color:#f0cdbe; line-height:1.7; }
-  /* 提出画面の「教科書に戻る」ボタン */
-  #screen-submit .btn-back-tb{ display:block; width:100%; margin-top:12px; cursor:pointer; font-family:"Shippori Mincho",serif; font-size:14px; padding:11px 20px; border-radius:8px; background:transparent; color:#caa14b; border:1.5px solid rgba(201,154,59,.55); transition:background .15s; }
-  #screen-submit .btn-back-tb:hover{ background:rgba(201,154,59,.12); }
-  @keyframes vlogPulse{ 0%,100%{opacity:.6} 50%{opacity:1} }
-  /* 状態別の行の見た目 */
-  .vlog-item.cleared .vlog-name{ color:#f0e2c0; }
-  .vlog-item.waiting{ background:rgba(120,170,255,.14); border:1px solid rgba(140,185,255,.5); box-shadow:0 0 14px rgba(120,170,255,.18); }
-  .vlog-item.waiting .vlog-no{ color:#bcd4ff; }
-  .vlog-item.locked{ opacity:.72; }
-  .vlog-item.locked .vlog-name{ color:#b7a67e; }
-  .vlog-foot{ margin-top:10px; text-align:center; font-family:"Shippori Mincho",serif; font-size:12px; color:#b1996a; }
-
-
-  /* ================= スマホ対応（受講生側） ================= */
-  @media (max-width: 640px){
-    /* マップの島パネル：画面幅に収める＋ボタンを縦積みで押しやすく */
-    #map-panel{ min-width:0 !important; width:calc(100vw - 26px); max-width:360px; padding:14px 16px; }
-    #map-panel .pbtn{ display:block; width:100%; margin-top:10px; padding:12px 16px; }
-    /* ログアウトボタン：小さめに */
-    #logoutBtn{ top:8px; left:8px; padding:5px 10px 5px 6px; }
-    #logoutBtn img{ width:24px; }
-    #logoutBtn span{ font-size:11px; }
-    /* 進捗表：画面いっぱいに近く */
-    .voyage-log{ max-width:100%; }
-    .vlog-name{ font-size:13px; }
-    .vlog-badge{ font-size:10px; padding:3px 7px; }
-    /* 検分待ち画面：中身が画面より長いとき全体をスクロール可に（下の単元や「海図へ戻る」まで届くように） */
-    #submitted{ align-items:flex-start; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-    /* ログイン画面：余白詰める */
-    #screen-login{ padding:16px 12px; }
-    .login-card{ padding:22px 18px 20px; }
-    .login-title{ font-size:20px; }
-    /* 提出画面：余白調整 */
-    #screen-submit{ padding:16px 12px; }
-    /* 教科書に戻る／課題ボタン等が画面幅に収まるよう */
-    .btn-main, .btn-back-tb{ width:100%; }
-
-    /* ★スマホ全画面の共通治療★
-       原因：どの画面も「中身を真ん中に置く／はみ出したら切る」設定だった。
-       スマホは縦が短いので、上下がはみ出して取りに行けなくなっていた。
-       対策：上から並べて全体をスクロール可にし、iPhoneのブラウザバー分の余白も確保する。 */
-    #screen-login, #screen-submit, #screen-map, #submitted, #result{
-      align-items:flex-start;
-      overflow-y:auto;
-      -webkit-overflow-scrolling:touch;
-      padding-top:18px;
-      padding-bottom:96px;   /* 下のブラウザバーに隠れないための逃げ */
-    }
-    /* 中身が短いときは中央に来るように（いいとこ取り） */
-    #screen-login > *, #screen-submit > *, #submitted > *, #result > *,
-    #screen-map > .mapwrap{
-      margin-top:auto; margin-bottom:auto;
-    }
-    /* iPhoneのバー込みの本当の画面高さを使う（100vhだと下がはみ出す） */
-    #screen-submit, #screen-map{ min-height:100dvh; }
-
-    /* ★航海図★ 横長の絵なのでスマホでは小さくなりすぎる。
-       →絵を大きめに描いて、指で左右にスワイプして見られるようにする（ピンチ拡大も従来どおり可）。 */
-    #screen-map .mapwrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    #screen-map .chart{ min-width:720px; }        /* 地図を大きく描く */
-    #screen-map .mnode{ width:34px; height:34px; } /* 島も指で押せる大きさに */
-    /* 左上のログアウトボタンと地図が重ならないよう、地図を下げる */
-    #screen-map{ padding-top:62px; }
-  }
-  /* さらに狭い端末（〜380px） */
-  @media (max-width: 380px){
-    #map-panel .pbtn{ font-size:13px; padding:11px 12px; }
-    .pn{ font-size:20px; }
-  }
-
-  /* ★複数枚提出（VOYAGE IV など）★ 絵と指示書が1対1で並ぶ */
-  .slot{ border:1.5px solid rgba(124,86,15,.5); border-radius:12px; margin-bottom:14px; overflow:hidden; background:rgba(255,252,242,.5); }
-  .slot-h{ background:linear-gradient(180deg,#2a1d10,#1e150b); color:#e8c56b; font-family:"Cinzel",serif; font-size:12px; letter-spacing:.12em; padding:7px 12px; }
-  .slot-body{ display:grid; grid-template-columns:140px 1fr; gap:12px; padding:12px; }
-  .slot-img{ position:relative; border:1.5px dashed rgba(124,86,15,.6); border-radius:9px; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; background:rgba(201,154,59,.06); transition:border-color .15s; }
-  .slot-img:hover{ border-color:#c9a03b; }
-  .slot-img.has{ border-style:solid; }
-  .slot-img img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .slot-e{ text-align:center; font-size:12px; color:#8a6a2f; line-height:1.8; }
-  .slot-x{ position:absolute; right:5px; top:5px; width:22px; height:22px; border-radius:50%; border:none; cursor:pointer; background:rgba(120,30,30,.85); color:#fff; font-size:12px; line-height:1; }
-  .slot-x:hover{ background:rgba(160,40,40,.95); }
-  .slot-p{ display:flex; flex-direction:column; }
-  .slot-pl{ font-size:11px; color:#8a6a2f; margin-bottom:4px; letter-spacing:.04em; }
-  .slot-ta{ flex:1; min-height:104px; width:100%; box-sizing:border-box; padding:9px 11px; border-radius:8px; border:1px solid rgba(124,86,15,.5); background:rgba(255,253,246,.85); color:#3a2a12; font-family:"Shippori Mincho",serif; font-size:13px; line-height:1.7; resize:vertical; }
-  .slot-ta:focus{ outline:none; border-color:#c9a03b; }
-  @media (max-width:640px){
-    .slot-body{ grid-template-columns:1fr; }
-    .slot-img{ aspect-ratio:16/10; }
-    .slot-ta{ min-height:88px; }
-  }
 </style>
 </head>
 <body>
 
-  <!-- ===== プロローグ画面（最初に表示） ===== -->
-  <div id="screen-prologue">
-    <iframe id="prologue-frame" src="/prologue.html" style="border:0;width:100%;height:100vh;display:block;"></iframe>
-  </div>
-
-  <!-- ===== ログイン画面（プロローグの後） ===== -->
-  <div id="screen-login" class="hidden">
-    <div class="login-wrap">
-      <div class="login-card">
-        <div class="login-emblem"><img src="/assets/jolly_roger.png" alt=""></div>
-        <div class="login-eyebrow">VOYAGER'S REGISTRY</div>
-        <h1 class="login-title">航海士の名を告げよ</h1>
-        <p class="login-sub">授かった名と合言葉で船に乗り込め。</p>
-
-        <div class="login-field">
-          <label>航海士の名</label>
-          <input type="text" id="login-name" placeholder="名前" autocomplete="username">
-        </div>
-        <div class="login-field">
-          <label>合言葉</label>
-          <input type="password" id="login-pass" placeholder="合言葉" autocomplete="current-password">
-        </div>
-
-        <div class="login-err" id="login-err"></div>
-
-        <button class="login-btn" id="login-submit">⚓ 船に乗り込む</button>
-
-        <div class="login-line">
-          <div class="login-line-divider"><span>まだ航海士でない者へ</span></div>
-          <p class="login-line-text">この冒険への乗船許可（名と合言葉）は、親方から授けられる。<br>下の羅針盤より申し出よ。</p>
-          <a class="login-line-btn" id="line-link" href="https://lin.ee/ykPJZsD" target="_blank" rel="noopener">
-            <span class="line-ico">⚓</span> 親方に乗船を申し出る（公式LINE）
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 教科書画面（島に上陸→提出の間） ===== -->
-  <div id="screen-textbook" class="hidden">
-    <iframe id="textbook-frame" src="/textbook_voyage1.html" style="border:0;width:100%;height:100dvh;display:block;"></iframe>
-  </div>
-
-  <!-- ===== 冒険マップ画面 ===== -->
-  <div id="screen-map" class="hidden">
-    <button id="logoutBtn" title="ログアウト" aria-label="ログアウト">
-      <img src="/assets/flag_logout.png" alt="">
-      <span>ログアウト</span>
+<header class="site-header">
+  <div class="wrap hbar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+      <span></span><span></span><span></span>
     </button>
-    <div class="mapwrap">
-      <div class="chart" id="map-chart">
-        <img src="/assets/chart.jpg" alt="航海図">
-        <div class="mtitle"><div class="eb">VOYAGER'S CHART</div><h2>航 海 図</h2></div>
-      </div>
-      <div id="map-panel"><div class="pn" id="mp-name"></div><div class="pv" id="mp-v"></div><div id="mp-voyages"></div><button class="pbtn" id="mp-btn"></button><button class="pbtn pbtn-log" id="mp-log">⚓ 検分の様子を見る</button><button class="pclose" id="mp-close">閉じる</button></div>
-    </div>
+    <nav class="gnav" id="gnav">
+      <a class="is-current" href="index.html">Top</a>
+      <a href="about.html">About us</a>
+      <a href="message.html">代表挨拶</a>
+      <a href="service.html">Service</a>
+      <a href="securedev.html">SecureDev Suite</a>
+      <a href="development.html">受託開発</a>
+      <a href="works.html">実績</a>
+      <a class="nav-cta" href="contact.html">お問い合わせ</a>
+    </nav>
   </div>
+</header>
 
-  <!-- ===== 提出画面 ===== -->
-  <div id="screen-submit" class="hidden">
-    <div class="card">
-      <div class="eyebrow">Cove of Beginnings</div>
-      <h1>門番に挑む</h1>
-      <div class="sub">作った絵と、使った指示書を携えて、門番の前へ</div>
-      <div class="divider"></div>
+<!-- ========== 表紙 ========== -->
+<div class="cover" id="cover">
+  <div class="cover-in">
+    <h1 class="cover-name f-cormorant">AI-INFLUENCER</h1>
+    <div class="cover-en">INC.</div>
+  </div>
+  <button class="cover-scroll" id="coverScroll" aria-label="本文へ進む">
+    <span>SCROLL</span>
+    <span class="bar" aria-hidden="true"></span>
+  </button>
+</div>
 
-      <!-- 1枚モード（VOYAGE I〜III）：従来どおり -->
-      <div id="single-mode">
-        <div class="label"><span class="n">I</span><span id="lbl-images">作った絵を差し出す</span></div>
-        <div class="drop" id="drop">
-          <div class="ic">✦</div>
-          <div class="t" id="drop-t">ここに画像をドラッグ＆ドロップ</div>
-          <div class="d" id="drop-d">またはクリックして選ぶ（jpg / png / webp）</div>
+<!-- ========== ヒーロー ========== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <div class="eng">AI × <em>SECURITY</em></div>
+      <h2 class="hero-h">速く作れる時代に、<br>「点検する」を仕組みで持つ。</h2>
+      <p>自社プロダクトの開発・提供と、法人向けの受託開発。</p>
+    </div>
+
+    <!-- 事業の六角形図 -->
+    <div class="honey reveal reveal-d1" aria-label="事業領域">
+      <div class="hrow">
+        <a class="hexc is-lead" href="securedev.html"><span class="hexc-in"><span>SecureDev<br>Suite</span></span></a>
+        <a class="hexc is-lead" href="development.html"><span class="hexc-in"><span>受託開発</span></span></a>
+      </div>
+      <div class="hrow">
+        <a class="hexc" href="service.html#branding"><span class="hexc-in"><span>企業<br>ブランディング</span></span></a>
+        <div class="hexc is-core">
+          <span class="hexc-in">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#ffffff"/><path d="M32 22 L44 44" stroke="#ffffff" stroke-width="3.5" fill="none"/></svg>
+            <span>AIインフルエンサー</span>
+          </span>
         </div>
-        <input type="file" id="file" accept="image/*" class="hidden">
-        <div class="preview hidden" id="preview"><img id="previmg" alt="提出する絵"><div class="fname" id="fname"></div></div>
-
-        <div class="label"><span class="n">II</span>使った指示書を記す</div>
-        <textarea id="prompt" placeholder="例：色鮮やかなオウムが翼を広げている絵。正面からのアップ、夕焼けの暖かい光、写真のようにリアルに"></textarea>
-        <div class="hint" id="prompt-hint">※ 5つの要素（何を・様子・色や雰囲気・構図・画風）を意識して書くほど、門番を突破しやすい。</div>
+        <a class="hexc" href="service.html#video"><span class="hexc-in"><span>動画制作</span></span></a>
       </div>
-
-      <!-- 複数枚モード（VOYAGE IV など）：絵と指示書が1対1で並ぶ -->
-      <div id="multi-mode" class="hidden">
-        <div class="label"><span class="n">I</span><span id="lbl-multi">3案を差し出す</span></div>
-        <div class="hint" id="multi-hint" style="margin-bottom:14px"></div>
-        <div id="slots"></div>
+      <div class="hrow">
+        <a class="hexc" href="service.html#management"><span class="hexc-in"><span>マネジメント</span></span></a>
+        <a class="hexc" href="service.html#influencer"><span class="hexc-in"><span>AI<br>インフルエンサー</span></span></a>
       </div>
-
-      <button class="btn-main" id="submit">⚔ 門番に挑む</button>
-      <button class="btn-back-tb" id="backToTextbook">📖 教科書に戻る</button>
-      <div class="err" id="err"></div>
     </div>
+    <p class="honey-note reveal reveal-d2">上段の2つが、現在の主力事業です。六角形を押すと各ページへ進みます。</p>
   </div>
+</div>
 
-  <!-- ===== バトル画面 ===== -->
-  <div id="screen-battle" class="hidden">
-    <div id="sky">
-      <img id="boss" src="/assets/boss.png" alt="門番">
-      <div class="darken"></div>
+<!-- ========== サービス ========== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Service</h2>
+      <div class="ja">事業内容</div>
     </div>
-    <div class="b-top">
-      <h2>門番との戦い</h2>
-      <div class="name">海賊「宵闇のレイ」が立ちはだかる</div>
-    </div>
-    <div id="status" class="flick">⚔ 戦闘力を測定中…</div>
-    <div class="hpwrap">
-      <div class="hprow"><span class="hpname">門番 HP</span><span class="hpnum" id="hpnum">100</span></div>
-      <div class="hpbar"><div id="hpfill"></div></div>
-    </div>
-    <div id="slashfx"></div>
-
-    <!-- 結果オーバーレイ -->
-    <div id="result">
-      <div class="rcard">
-        <div class="rhead" id="rhead">討伐成功</div>
-        <div class="rbody">
-          <div class="gline" id="gline"></div>
-          <div class="details" id="details"></div>
-          <div class="score" id="scoreline"></div>
-          <div class="rbtns" id="rbtns"></div>
+    <div class="cards">
+      <a class="card" href="securedev.html">
+        <div class="card-vis has-img v-securedev"><span>SECURITY<br>PLATFORM</span></div>
+        <div class="card-body">
+          <h3>セキュリティ管理ツールの開発・提供</h3>
+          <p>開発チームを持つ企業向けの自社プロダクト SecureDev Suite を開発し、クラウドサービスとして提供しています。</p>
+          <div class="card-more">詳しく見る →</div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== お宝を積み込んだ（提出完了）演出 ===== -->
-  <div id="submitted">
-    <div class="sub-card">
-      <div class="sub-top">
-        <div class="eb">TREASURE SECURED</div>
-        <h3>お宝を船へ積み込んだ</h3>
-      </div>
-      <div class="sub-body">
-        <svg class="chest" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="34" cy="42" r="6" fill="#f2d271" stroke="#7c560f" stroke-width="1.5"/>
-          <circle cx="50" cy="37" r="6.5" fill="#ffd966" stroke="#7c560f" stroke-width="1.5"/>
-          <circle cx="66" cy="42" r="6" fill="#f2d271" stroke="#7c560f" stroke-width="1.5"/>
-          <path d="M18 48 a32 22 0 0 1 64 0" fill="#a9781f" stroke="#4a3208" stroke-width="2.4"/>
-          <rect x="18" y="46" width="64" height="9" fill="#c79a3b" stroke="#4a3208" stroke-width="1.6"/>
-          <rect x="18" y="52" width="64" height="30" rx="4" fill="#7c560f" stroke="#4a3208" stroke-width="2.4"/>
-          <rect x="45" y="54" width="10" height="16" rx="2" fill="#f2d271" stroke="#4a3208" stroke-width="1.6"/>
-          <circle cx="50" cy="61" r="2.6" fill="#4a3208"/>
-        </svg>
-        <p>討伐せしお宝は、無事に船倉へ収めた。<br>港に戻れば、親方（管理者）が最終の検分を行う。<br>沙汰を待て、若き航海士よ。<br>次なる航海の扉は、検分を経て開かれる。</p>
-
-        <!-- ===== STAGE 1 進捗表（検分待ちの離脱防止） ===== -->
-        <div class="voyage-log">
-          <div class="vlog-flag"><img src="/assets/jolly_roger.png" alt="Jolly Roger"></div>
-          <div class="vlog-head">
-            <span class="vlog-stage">STAGE I</span>
-            <span class="vlog-island">はじまりの入り江</span>
-          </div>
-          <ul class="vlog-list" id="vlog-list"></ul>
-          <div class="vlog-foot">親方の検分が済めば、次の航海の扉が開く。</div>
+      </a>
+      <a class="card" href="development.html">
+        <div class="card-vis has-img v-development"><span>CONTRACT<br>DEVELOPMENT</span></div>
+        <div class="card-body">
+          <h3>受託開発</h3>
+          <p>上場企業を含む法人のお客さまから、Webアプリケーションや社内向けツールの開発をお引き受けしています。</p>
+          <div class="card-more">詳しく見る →</div>
         </div>
-
-        <button class="sub-btn" id="subClose">海図へ戻る</button>
-      </div>
+      </a>
+      <a class="card" href="service.html#branding">
+        <div class="card-vis has-img v-branding"><span>BRANDING</span></div>
+        <div class="card-body">
+          <h3>企業ブランディング</h3>
+          <p>企業の見え方を整え、伝わる形にします。発信の設計から制作までを一貫して担当します。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#video">
+        <div class="card-vis has-img v-video"><span>VIDEO<br>PRODUCTION</span></div>
+        <div class="card-body">
+          <h3>動画制作</h3>
+          <p>企画から撮影・編集まで。目的に合わせた動画を制作します。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#management">
+        <div class="card-vis has-img v-management"><span>MANAGEMENT</span></div>
+        <div class="card-body">
+          <h3>マネジメント</h3>
+          <p>キャスティング、タレントマネジメントを行っています。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
+      <a class="card" href="service.html#influencer">
+        <div class="card-vis has-img v-influencer"><span>AI<br>INFLUENCER</span></div>
+        <div class="card-body">
+          <h3>AIインフルエンサー</h3>
+          <p>AIインフルエンサー、AIタレント、AIモデルを制作し、起用までをご相談いただけます。</p>
+          <div class="card-more">詳しく見る →</div>
+        </div>
+      </a>
     </div>
   </div>
+</section>
+
+<!-- ========== About 抜粋 ========== -->
+<section class="sec hex-soft">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>About us</h2>
+      <div class="ja">私達について</div>
+      <p class="desc">
+        新しいテクノロジーと価値観が生まれる新時代で、一人ひとりが美しく、健やかに生きる術を。
+      </p>
+    </div>
+    <div class="center btn-row">
+      <a class="btn btn-s" href="about.html">会社概要</a>
+      <a class="btn btn-s" href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 締め ========== -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>まずは、お話をお聞かせください。</h2>
+    <p>製品の導入も、受託開発のご依頼も、こちらから承ります。決まりきっていない段階のご相談で構いません。オンラインで30分ほどから始められます。</p>
+    <a class="btn btn-w" href="contact.html">お問い合わせ</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f9b8a"/><stop offset="1" stop-color="#2f6fd0"/></linearGradient></defs><path d="M32 8 L58 56 L6 56 Z" fill="none" stroke="url(#lg2)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="8" r="6" fill="#2f6fd0"/><path d="M32 22 L44 44" stroke="url(#lg2)" stroke-width="3.5" fill="none"/></svg>
+      <b>AIインフルエンサー</b>
+    </a>
+    <div class="addr">〒550-0012 大阪府大阪市西区立売堀6-7-50</div>
+    <nav class="fnav">
+      <a href="index.html">Top</a><span>|</span>
+      <a href="about.html">About us</a><span>|</span>
+      <a href="message.html">代表挨拶</a><span>|</span>
+      <a href="service.html">Service</a><span>|</span>
+      <a href="securedev.html">SecureDev Suite</a><span>|</span>
+      <a href="development.html">受託開発</a>
+      <a href="works.html">実績</a><span>|</span>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <nav class="fnav fnav-sub">
+      <a href="privacy.html">プライバシーポリシー</a><span>|</span>
+      <a href="legal.html">特定商取引法に基づく表記</a>
+    </nav>
+    <div class="copy">© 株式会社AIインフルエンサー All Rights Reserved.</div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="ページの先頭へ戻る">▲</button>
 
 <script>
-  // ------- 要素 -------
-  const $ = (id)=>document.getElementById(id);
-  const drop=$("drop"), fileInput=$("file"), preview=$("preview"), previmg=$("previmg"), fname=$("fname");
-  const promptEl=$("prompt"), submitBtn=$("submit"), errEl=$("err");
-  const screenSubmit=$("screen-submit"), screenBattle=$("screen-battle"), screenMap=$("screen-map");
-  const sky=$("sky"), boss=$("boss"), hpfill=$("hpfill"), hpnum=$("hpnum"), statusEl=$("status"), slashfx=$("slashfx");
-  const resultEl=$("result"), rhead=$("rhead"), gline=$("gline"), details=$("details"), scoreline=$("scoreline"), rbtns=$("rbtns");
-
-  // ★提出画面の文言（航海ごと）★ 教科書を作るたび、ここに足していく
-  const SUBMIT_TEXT = {
-    1: { ph:"例：色鮮やかなオウムが翼を広げている絵。正面からのアップ、夕焼けの暖かい光、写真のようにリアルに",
-         hint:"※ 5つの要素（何を・様子・色や雰囲気・構図・画風）を意識して書くほど、門番を突破しやすい。" },
-    2: { ph:"例：隻眼の老海賊が、嵐の甲板で舵を握りしめている。雷光が彼の横顔を照らす。下から見上げる構図。油絵風の重厚な質感で。",
-         hint:"※ お題の6条件を、1つも落とさず書き込め。書き落とせば、その時点で門は開かない。" },
-    3: { ph:"例：赤い羽根つき帽子の女海賊。左手に金貨をちょうど3枚（重ならないよう扇状に）。右手は腰。背後に帆船2隻。夕焼け。水彩画風。",
-         hint:"※ 数と左右は、AIが最も守らぬところ。念を押し、重ねて書き、出るまで練り直せ。" },
-    4: { ph:"例：お題は「宝箱を発見した瞬間の海賊」。構図の軸で3案振った。1案目＝宝箱に寄ったアップ。2案目＝洞窟全体の引き。3案目＝真上からの俯瞰。",
-         hint:"※ 3枚が「明らかに別案」であること。何の軸を振ったかを、必ず指示書に記せ。" },
-  };
-  function applySubmitText(no){
-    const t = SUBMIT_TEXT[no];
-    const hintEl = document.getElementById("prompt-hint");
-    if(t){
-      if(promptEl) promptEl.setAttribute("placeholder", t.ph);
-      if(hintEl) hintEl.textContent = t.hint;
-    }
-  }
-
-  let imageBase64=null, imageMediaType=null;
-  // ★複数枚提出★ 絵と指示書を1対1で持つ
-  let needImages = 1;
-  let slots = [];   // [{data, media_type, name, prompt}]
-
-  const singleMode = document.getElementById("single-mode");
-  const multiMode  = document.getElementById("multi-mode");
-  const slotsEl    = document.getElementById("slots");
-  const lblMulti   = document.getElementById("lbl-multi");
-  const multiHint  = document.getElementById("multi-hint");
-
-  // その航海の必要枚数を取りに行き、提出画面の見た目を合わせる
-  async function setupSubmitFor(voyageNo){
-    needImages = 1;
-    applySubmitText(voyageNo);   // ★その航海の例文・注意書きに差し替える★
-    try{
-      const r = await fetch("/api/voyage-info/"+voyageNo);
-      if(r.ok){ const info = await r.json(); needImages = Number(info.images) || 1; }
-    }catch(e){}
-
-    imageBase64=null; imageMediaType=null;
-    if(preview) preview.classList.add("hidden");
-
-    if(needImages > 1){
-      // 複数枚モード
-      singleMode.classList.add("hidden");
-      multiMode.classList.remove("hidden");
-      slots = [];
-      for(let i=0;i<needImages;i++) slots.push({data:null, media_type:null, name:null, prompt:""});
-      if(lblMulti) lblMulti.textContent = needImages+"案を差し出す（絵と、その絵に使った指示書）";
-      const t = SUBMIT_TEXT[voyageNo];
-      if(multiHint) multiHint.textContent = t ? t.hint : "";
-      renderSlots();
-    }else{
-      // 1枚モード（従来どおり）
-      multiMode.classList.add("hidden");
-      singleMode.classList.remove("hidden");
-      slots = [];
-    }
-  }
-  window.setupSubmitFor = setupSubmitFor;
-
-  function renderSlots(){
-    if(!slotsEl) return;
-    let html = "";
-    for(let i=0;i<needImages;i++){
-      const s = slots[i] || {};
-      const img = s.data
-        ? '<img src="data:'+s.media_type+';base64,'+s.data+'" alt=""><button class="slot-x" data-i="'+i+'">✕</button>'
-        : '<div class="slot-e">✦<br>絵を選ぶ</div>';
-      html += ''
-        + '<div class="slot">'
-        +   '<div class="slot-h">'+(i+1)+'案目</div>'
-        +   '<div class="slot-body">'
-        +     '<div class="slot-img'+(s.data?' has':'')+'" data-i="'+i+'">'+img+'</div>'
-        +     '<div class="slot-p">'
-        +       '<div class="slot-pl">この絵に使った指示書</div>'
-        +       '<textarea class="slot-ta" data-i="'+i+'" placeholder="'+(i+1)+'案目の指示書を記す">'+(s.prompt||"")+'</textarea>'
-        +     '</div>'
-        +   '</div>'
-        + '</div>';
-    }
-    slotsEl.innerHTML = html;
-
-    // 絵を選ぶ
-    slotsEl.querySelectorAll(".slot-img").forEach(el=>{
-      el.onclick = (ev)=>{
-        if(ev.target.classList.contains("slot-x")) return;
-        const i = Number(el.getAttribute("data-i"));
-        pickImageFor(i);
-      };
-    });
-    // 絵を外す
-    slotsEl.querySelectorAll(".slot-x").forEach(b=>{
-      b.onclick = (ev)=>{
-        ev.stopPropagation();
-        const i = Number(b.getAttribute("data-i"));
-        slots[i].data=null; slots[i].media_type=null; slots[i].name=null;
-        renderSlots();
-      };
-    });
-    // 指示書を打ったら覚える
-    slotsEl.querySelectorAll(".slot-ta").forEach(ta=>{
-      ta.oninput = ()=>{ slots[Number(ta.getAttribute("data-i"))].prompt = ta.value; };
+(function(){
+  var b=document.getElementById('burger'), n=document.getElementById('gnav');
+  b.addEventListener('click',function(){
+    var o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!o));
+    b.setAttribute('aria-label',o?'メニューを開く':'メニューを閉じる');
+    n.classList.toggle('is-open',!o);
+    document.body.classList.toggle('is-menu-open',!o);
+  });
+  /* 表紙から本文へ */
+  var cs=document.getElementById('coverScroll');
+  if(cs){
+    cs.addEventListener('click',function(){
+      var h=document.getElementById('cover');
+      window.scrollTo({top:h.offsetHeight,behavior:'smooth'});
     });
   }
 
-  // n案目の絵を選ばせる
-  let pickingFor = -1;
-  function pickImageFor(i){
-    pickingFor = i;
-    fileInput.removeAttribute("multiple");
-    fileInput.click();
-  }
-
-  // ------- 画像選択 -------
-  drop.addEventListener("click", ()=>{ pickingFor=-1; fileInput.click(); });
-  drop.addEventListener("dragover", (e)=>{ e.preventDefault(); drop.classList.add("drag"); });
-  drop.addEventListener("dragleave", ()=>drop.classList.remove("drag"));
-  drop.addEventListener("drop", (e)=>{ e.preventDefault(); drop.classList.remove("drag"); if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
-  fileInput.addEventListener("change", (e)=>{
-    const f = e.target.files[0];
-    if(f){
-      if(pickingFor >= 0) handleSlotFile(f, pickingFor);
-      else handleFile(f);
-    }
-    pickingFor = -1;
-    e.target.value="";
-  });
-
-  // n案目の絵として取り込む
-  function handleSlotFile(file, i){
-    if(!file.type.startsWith("image/")){ showErr("画像ファイルを選んでください。"); return; }
-    const reader=new FileReader();
-    reader.onload=()=>{
-      const dataUrl=reader.result;
-      slots[i].media_type = dataUrl.substring(dataUrl.indexOf(":")+1, dataUrl.indexOf(";"));
-      slots[i].data       = dataUrl.substring(dataUrl.indexOf(",")+1);
-      slots[i].name       = file.name;
-      renderSlots(); showErr("");
-    };
-    reader.readAsDataURL(file);
-  }
-
-  function handleFile(file){
-    if(!file.type.startsWith("image/")){ showErr("画像ファイルを選んでください。"); return; }
-    const reader=new FileReader();
-    reader.onload=()=>{
-      const dataUrl=reader.result;
-      imageMediaType=dataUrl.substring(dataUrl.indexOf(":")+1, dataUrl.indexOf(";"));
-      imageBase64=dataUrl.substring(dataUrl.indexOf(",")+1);
-      previmg.src=dataUrl; fname.textContent=file.name;
-      preview.classList.remove("hidden"); showErr("");
-    };
-    reader.readAsDataURL(file);
-  }
-  function showErr(msg){ errEl.textContent=msg; }
-
-  // ------- 提出 -------
-  submitBtn.addEventListener("click", async ()=>{
-    let promptText;
-    // ★枚数チェック★
-    if(needImages > 1){
-      const missImg = slots.findIndex(s=>!s.data);
-      if(missImg >= 0){ showErr((missImg+1)+"案目の絵がまだだ。"+needImages+"案すべて差し出してくれ。"); return; }
-      const missP = slots.findIndex(s=>!(s.prompt||"").trim());
-      if(missP >= 0){ showErr((missP+1)+"案目の指示書がまだだ。それぞれの絵に使った指示書を記してくれ。"); return; }
-      // 3案ぶんの指示書を、門番に分かる形でまとめる
-      promptText = slots.map((s,i)=>"【"+(i+1)+"案目の指示書】\n"+s.prompt.trim()).join("\n\n");
-    }else{
-      if(!imageBase64){ showErr("まず、作った絵を差し出してくれ。"); return; }
-      promptText = promptEl.value.trim();
-      if(!promptText){ showErr("使った指示書を記してくれ。"); return; }
-    }
-    showErr("");
-    startBattle();
-    try{
-      // ★どの航海の門番に挑むかを伝える★（これが無いと常にVOYAGE Iの基準で採点されてしまう）
-      const voyageNo = (window.currentVoyage || 1);
-      const payload = (needImages > 1)
-        ? { images: slots.map(s=>({data:s.data, media_type:s.media_type})), prompt_text:promptText, voyage:voyageNo }
-        : { image_base64:imageBase64, media_type:imageMediaType, prompt_text:promptText, voyage:voyageNo };
-      const res=await fetch("/api/grade",{ method:"POST", headers:{"content-type":"application/json"},
-        body:JSON.stringify(payload) });
-      const data=await res.json();
-      if(!res.ok){ finishError(data.error||"採点でエラーが起きた。"); return; }
-      // 提出時にDBへ記録できるよう、指示文と採点結果を覚えておく
-      window.lastPromptText = promptText;
-      window.lastGradeData = data;
-      window.lastImageData = (needImages > 1)
-        ? (slots[0] && slots[0].data ? ("data:"+slots[0].media_type+";base64,"+slots[0].data) : null)
-        : (imageBase64 ? ("data:"+imageMediaType+";base64,"+imageBase64) : null);
-      window.lastImageList = (needImages > 1)
-        ? slots.map(s=>"data:"+s.media_type+";base64,"+s.data)
-        : null;
-      window.currentVoyage = (window.currentVoyage || 1);
-
-      // ★挑戦の記録★ 合否に関わらず、この1回を履歴として残す（管理者だけが見る）
-      // 失敗しても受講生の体験は止めない（記録は裏で静かに行う）
-      try{
-        fetch("/api/attempt",{ method:"POST", headers: authHeaders({"content-type":"application/json"}),
-          body: JSON.stringify({
-            voyage: window.currentVoyage,
-            image_data: window.lastImageData,
-            prompt_text: promptText,
-            grade_pass: (data.final_result==="pass"),
-            grade_json: data
-          })
-        });
-      }catch(e){}
-
-      await minBattleTime();
-      finishBattle(data);
-    }catch(e){ finishError("通信に失敗した。もう一度挑んでくれ。（"+e.message+"）"); }
-  });
-
-  // ------- バトル演出 -------
-  let battleStart=0, battleTimer=null;
-  function setHP(v){ hpfill.style.width=v+"%"; hpnum.textContent=Math.round(v); }
-  // 門番のポーズ4種（構え/斬り上げ/被弾/敗北）を先読みしておく
-  const POSES = { a:"/assets/pose_a.png", b:"/assets/pose_b.png", c:"/assets/pose_c.png", d:"/assets/pose_d.png" };
-  Object.values(POSES).forEach(src=>{ const i=new Image(); i.src=src; });
-  let poseStep=0;
-
-  function startBattle(){
-    // 背景セット
-    sky.style.backgroundImage="url('/assets/storm.png')";
-    boss.src=POSES.a; boss.classList.add("floating");
-    boss.style.opacity=""; boss.style.transform=""; // 前回の敗北ポーズをリセット
-    screenSubmit.classList.add("hidden"); screenBattle.classList.remove("hidden");
-    resultEl.classList.remove("show"); resultEl.style.pointerEvents="none";
-    statusEl.classList.remove("hidden"); statusEl.classList.add("flick");
-    setHP(100); battleStart=Date.now(); poseStep=0;
-    // 採点中は攻防アニメをループ（ポーズを切り替えながらHPを揺らす）
-    let hp=100, dir=-1;
-    battleTimer=setInterval(()=>{
-      cyclePose();
-      hitEffect();
-      hp += dir*(6+Math.random()*6);
-      if(hp<45){ hp=45; dir=1; } if(hp>92){ hp=92; dir=-1; }
-      setHP(hp);
-    }, 640);
-  }
-  // 構え → 斬り上げ → 被弾 → を繰り返して「戦ってる」動きを出す
-  function cyclePose(){
-    const seq=[POSES.b, POSES.c, POSES.a]; // 斬りかかる→のけぞる→構え直す
-    boss.classList.remove("floating"); // 手動切替中はふわふわ停止
-    boss.src=seq[poseStep % seq.length];
-    poseStep++;
-  }
-  function hitEffect(){
-    boss.classList.add("hit"); sky.classList.add("shake","flash");
-    const s=document.createElement("div"); s.className="slash"; s.textContent=Math.random()>.5?"✕":"✦";
-    s.style.left=(30+Math.random()*40)+"%"; s.style.top=(28+Math.random()*34)+"%";
-    slashfx.appendChild(s); requestAnimationFrame(()=>s.classList.add("go")); setTimeout(()=>s.remove(),450);
-    setTimeout(()=>{ boss.classList.remove("hit"); sky.classList.remove("shake","flash"); },200);
-  }
-  function minBattleTime(){ // 最低4秒はバトルを見せる
-    const elapsed=Date.now()-battleStart; const wait=Math.max(0,4000-elapsed);
-    return new Promise(r=>setTimeout(r,wait));
-  }
-  function stopLoop(){ if(battleTimer){ clearInterval(battleTimer); battleTimer=null; } }
-
-  function finishBattle(data){
-    stopLoop(); statusEl.classList.add("hidden"); boss.classList.remove("floating");
-    const pass = data.final_result==="pass";
-    if(pass){
-      victorySequence(data);   // 派手な討伐演出（結果カードは中で少し溜めてから出す）
-    }else{
-      // HPを一気に少し削って止める＝倒しきれない。門番は被弾して仁王立ち
-      setHP(30); boss.src=POSES.c; hitEffect(); sky.classList.add("flash");
-      showResult(data, false);
-    }
-  }
-
-  // ===== 派手な勝利演出（全部乗せ）=====
-  function victorySequence(data){
-    // ① トドメの大斬撃
-    const bs=document.createElement("div"); bs.className="bigslash"; screenBattle.appendChild(bs); setTimeout(()=>bs.remove(),450);
-    // ② 大フラッシュ（爆発）
-    const bf=document.createElement("div"); bf.className="bigflash"; screenBattle.appendChild(bf); setTimeout(()=>bf.remove(),600);
-    // ③ 強い画面揺れ
-    sky.classList.add("bigshake"); setTimeout(()=>sky.classList.remove("bigshake"),520);
-    // ④ 門番、崩れ落ちる
-    setHP(0); boss.style.transition="opacity 1s, transform .7s"; boss.src=POSES.d;
-    boss.style.opacity=".2"; boss.style.transform="translateX(-50%) translateY(42px) rotate(8deg)";
-    // ⑤ 金貨ドバー＋キラキラ
-    setTimeout(()=>{ confettiBig(); sparkleBurst(); }, 180);
-    // ⑥ 少し溜めてから結果カードをドーンと
-    setTimeout(()=>showResult(data, true), 950);
-  }
-  function sparkleBurst(){
-    for(let i=0;i<26;i++){
-      const s=document.createElement("div"); s.className="spark"; s.textContent=Math.random()>.5?"✦":"✧";
-      s.style.left=(10+Math.random()*80)+"%"; s.style.top=(15+Math.random()*60)+"%";
-      s.style.fontSize=(20+Math.random()*34)+"px"; s.style.animationDelay=(Math.random()*.4)+"s";
-      slashfx.appendChild(s); requestAnimationFrame(()=>s.classList.add("go")); setTimeout(()=>s.remove(),1000);
-    }
-  }
-  function finishError(msg){
-    stopLoop(); statusEl.classList.add("hidden");
-    showResult({ guardian_line:msg, final_result:"error" }, false, true);
-  }
-
-  // ------- 結果表示 -------
-  function showResult(data, pass, isError){
-    rhead.className="rhead "+(pass?"pass":"fail");
-    rhead.textContent = isError ? "しくじった" : (pass ? "討伐成功" : "再挑戦");
-    gline.textContent = data.guardian_line || "";
-    // 詳細（不合格時のみ・ほめ/不足/直し方）
-    details.innerHTML="";
-    if(!pass && !isError && (data.good_point||data.missing_point||data.fix_advice)){
-      const rows=[["良かった点",data.good_point],["足りない点",data.missing_point],["直し方",data.fix_advice]];
-      details.innerHTML = rows.filter(r=>r[1]).map(r=>`<div class="drow"><b>${r[0]}：</b>${r[1]}</div>`).join("");
-    }
-    scoreline.textContent = (typeof data.score==="number") ? ("SCORE  "+data.score) : "";
-    // ボタン
-    rbtns.innerHTML="";
-    if(pass){
-      // 合格でも「そのまま提出」か「もっと良くしてから」を受講生が選べる
-      const submit=document.createElement("button"); submit.className="rbtn primary"; submit.textContent="お宝を持ち帰る（管理者へ提出）";
-      submit.onclick=async ()=>{
-        submit.disabled=true; submit.textContent="提出中…";
-        try{
-          await fetch("/api/submit",{ method:"POST", headers: authHeaders({"content-type":"application/json"}),
-            body: JSON.stringify({
-              voyage: (window.currentVoyage||1),
-              prompt_text: (window.lastPromptText||""),
-              image_data: (window.lastImageData||null),
-              grade_pass: true,
-              grade_json: (window.lastGradeData||null)
-            })
-          });
-        }catch(e){ /* 記録に失敗しても画面は進める */ }
-        // 今挑んだ単元が属する島の進捗表を出す
-        const vno = (window.currentVoyage||1);
-        const own = MAP_NODES.find(n=>(n.vs||[]).includes(vno));
-        if(own) logNode = own;
-        await refreshProgress();               // 進捗表を最新に更新
-        document.getElementById("submitted").classList.add("show");
-      };
-      const retry=document.createElement("button"); retry.className="rbtn ghost"; retry.textContent="もう一度 挑む（作り直す）";
-      retry.onclick=()=>backToSubmit();
-      rbtns.appendChild(submit); rbtns.appendChild(retry);
-    }else{
-      const b=document.createElement("button"); b.className="rbtn primary"; b.textContent="もう一度 挑む";
-      b.onclick=()=>backToSubmit();
-      rbtns.appendChild(b);
-    }
-    resultEl.classList.add("show"); resultEl.style.pointerEvents="auto";
-  }
-  // ===== 冒険マップ =====
-  // vs = その島に入っている VOYAGE 番号（教科書と採点基準を作ったら、ここに足していく）
-  const MAP_NODES=[
-    {x:16.2,y:82,  name:"はじまりの入り江", v:"STAGE I ・ 画像生成 入門",     st:"current", vs:[1,2,3,4]},
-    {x:30.5,y:51.9,name:"描き手の島",       v:"STAGE II ・ 画像を実務レベルに", st:"locked", vs:[5,6,7,8,9,10]},
-    {x:47.5,y:53.9,name:"デザイン港町",     v:"STAGE III ・ デザイン成果物",   st:"locked", vs:[11,12,13,14,15,16,17]},
-    {x:55.5,y:65.3,name:"幻影の入り江",     v:"STAGE IV ・ 動画・音声",        st:"locked", vs:[18,19,20,21,22]},
-    {x:72.3,y:68.5,name:"羅針盤諸島",       v:"STAGE V ・ ライティング",       st:"locked", vs:[23,24,25,26,27]},
-    {x:62,y:50.3,  name:"荒波の岩礁",       v:"STAGE VI ・ Web制作 入門",      st:"locked", vs:[28,29,30,31]},
-    {x:77,y:52.3,  name:"巨像の遺跡",       v:"STAGE VII ・ LP・ホームページ", st:"locked", vs:[32,33,34,35,36,37]},
-    {x:68.9,y:34.5,name:"機巧の城塞島",     v:"STAGE VIII ・ アプリを作る",    st:"locked", vs:[38,39,40,41,42,43,44]},
-    {x:81.1,y:32.9,name:"からくり工廠",     v:"STAGE IX ・ AI活用・自動化",    st:"locked", vs:[45,46,47,48]},
-    {x:90.5,y:19.6,name:"黄金都市エルドラド", v:"STAGE X ・ 収益化・卒業制作",  st:"locked", vs:[49,50,51,52,53,54]},
-  ];
-  const mapChart=$("map-chart"), mapPanel=$("map-panel"), mpName=$("mp-name"), mpV=$("mp-v"), mpBtn=$("mp-btn");
-  MAP_NODES.forEach(n=>{
-    const el=document.createElement("div"); el.className="mnode "+n.st; el.style.left=n.x+"%"; el.style.top=n.y+"%";
-    let ic=n.st==="locked"?"🔒":(n.st==="cleared"?"🏴‍☠️":"⚓");
-    let inner='<div class="mglow"></div><div class="micon">'+ic+'</div>';
-    if(n.st==="current") inner+='<div class="mhere">現在地</div>';
-    inner+='<div class="mtip">'+n.name+'<span class="v">'+n.v+'</span></div>';
-    el.innerHTML=inner; el.onclick=()=>openMapPanel(n); mapChart.appendChild(el);
-  });
-  async function openMapPanel(n){
-    mpName.textContent=n.name; mpV.textContent=n.v;
-    logNode = n;   // ★この島の進捗表を出す★
-    const listEl = document.getElementById("mp-voyages");
-
-    if(n.st==="locked"){
-      // 島ごとロックされている
-      if(listEl) listEl.innerHTML = "";
-      mpBtn.style.display="";
-      mpBtn.textContent="🗝️ 検分を経て開かれる"; mpBtn.className="pbtn lock"; mpBtn.onclick=null;
-      mapPanel.classList.add("show");
-      return;
-    }
-
-    // ★上陸できる島＝中の航海（単元）を選ばせる★
-    mpBtn.style.display="none";     // 「上陸する」ボタンは使わない
-    if(listEl){
-      listEl.innerHTML = '<div class="mp-loading">航海を確認中…</div>';
-      mapPanel.classList.add("show");
-
-      // 鍵の状態を取ってくる
-      let stateOf={};
-      try{
-        const r=await fetch("/api/progress",{ headers: authHeaders() });
-        if(r.ok){
-          const prog=await r.json();
-          (prog.voyages||[]).forEach(v=>{ stateOf[v.voyage]=v.state; });
-        }
-      }catch(e){}
-
-      const vs = n.vs || [];
-      listEl.innerHTML = vs.map(no=>{
-        const info = VOYAGE_INFO[no]; if(!info) return "";
-        const st = stateOf[no] || "locked";
-        const open = (st!=="locked");        // 鍵が開いていれば挑める
-        return `<button class="mp-v ${open?"":"lk"}" data-no="${open?no:""}" ${open?"":"disabled"}>
-          <span class="mp-v-no">${info.roman}</span>
-          <span class="mp-v-name">${info.name}<span class="mp-v-sub">${info.sub}</span></span>
-          <span class="mp-v-st">${open ? badgeFor(st) : "🔒"}</span>
-        </button>`;
-      }).join("") || '<div class="mp-loading">この島の航海はまだ準備中だ。</div>';
-
-      // 押したら、その航海の教科書へ
-      listEl.querySelectorAll(".mp-v:not(.lk)").forEach(b=>{
-        b.onclick=()=>{
-          const no = Number(b.getAttribute("data-no"));
-          if(!no) return;
-          window.currentVoyage = no;      // ★どの航海に挑むかを記録★
-          goToSubmit();
-        };
+  /* 画面に入った要素を浮き出させる */
+  var targets=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && targets.length){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-      return;
-    }
-    mapPanel.classList.add("show");
-  }
-  $("mp-close").onclick=()=>mapPanel.classList.remove("show");
-  // 「検分の様子を見る」→ 進捗表（検分待ち画面）を開く
-  $("mp-log").onclick=async ()=>{
-    mapPanel.classList.remove("show");
-    await refreshProgress();
-    document.getElementById("submitted").classList.add("show");
-  };
-  // マップ → 教科書へ（島に上陸したらまず学ぶ）
-  function goToSubmit(){
-    mapPanel.classList.remove("show");
-    screenMap.classList.add("hidden");
-    var tb=document.getElementById("screen-textbook");
-    tb.classList.remove("hidden");
-    // ★その航海の教科書を読み込む★（VOYAGE II なら textbook_voyage2.html）
-    var tf=document.getElementById("textbook-frame");
-    var no=(window.currentVoyage||1);
-    var want="/textbook_voyage"+no+".html";
-    if(tf.getAttribute("src")!==want){ tf.setAttribute("src", want); }
-    // ★提出画面を、この航海の必要枚数に合わせる★（VOYAGE IV は3枚）
-    try{ if(window.setupSubmitFor) window.setupSubmitFor(no); }catch(e){}
-    // 教科書を先頭までスクロールして表示
-    try{ tf.contentWindow.scrollTo(0,0); }catch(e){}
-    window.scrollTo(0,0);
-  }
-  // 教科書 →「課題に挑む」→ 提出画面へ
-  function goToSubmitFromTextbook(){
-    document.getElementById("screen-textbook").classList.add("hidden");
-    screenSubmit.classList.remove("hidden");
-    window.scrollTo(0,0);
-  }
-  // 提出画面 →「教科書に戻る」（入力内容は消さずに隠すだけ）
-  function backToTextbookFromSubmit(){
-    screenSubmit.classList.add("hidden");          // 提出画面は隠すだけ＝画像も指示文も残る
-    document.getElementById("screen-textbook").classList.remove("hidden");
-    var tf=document.getElementById("textbook-frame");
-    try{ tf.contentWindow.scrollTo(0,0); }catch(e){}
-    window.scrollTo(0,0);
-  }
-  // 「教科書に戻る」ボタンに繋ぐ
-  (function(){
-    var b=document.getElementById("backToTextbook");
-    if(b) b.onclick=backToTextbookFromSubmit;
-  })();
-  // 提出画面/バトル → マップへ戻る
-  function goToMap(){
-    resultEl.classList.remove("show");
-    document.getElementById("submitted").classList.remove("show");
-    screenBattle.classList.add("hidden"); screenSubmit.classList.add("hidden");
-    screenMap.classList.remove("hidden");
-    boss.style.opacity=""; boss.style.transform="";
+    },{ rootMargin:'0px 0px -12% 0px', threshold:.08 });
+    Array.prototype.forEach.call(targets,function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(targets,function(el){ el.classList.add('is-in'); });
   }
 
-  function backToSubmit(){
-    resultEl.classList.remove("show");
-    screenBattle.classList.add("hidden"); screenSubmit.classList.remove("hidden");
-    boss.style.opacity=""; boss.style.transform="";
-  }
-  // 「お宝を積み込んだ」演出を閉じて、海図（マップ）へ戻る
-  document.getElementById("subClose").onclick=()=>{
-    goToMap();
-  };
-  function confetti(){
-    const cols=["#c08a24","#f2d271","#a72e1b","#e9ddc4","#7c560f"]; const W=window.innerWidth;
-    for(let n=0;n<80;n++){ const c=document.createElement("div"); c.className="cft";
-      c.style.background=cols[n%cols.length]; c.style.left=(Math.random()*W)+"px"; c.style.borderRadius=Math.random()>.5?"2px":"50%";
-      slashfx.appendChild(c);
-      const dx=(Math.random()-.5)*160, dy=window.innerHeight+40, rot=Math.random()*720-360, dur=1400+Math.random()*900;
-      c.animate([{transform:"translate(0,0)",opacity:1},{transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:1,offset:.85},{transform:`translate(${dx}px,${dy+30}px)`,opacity:0}],{duration:dur,easing:"cubic-bezier(.3,.6,.4,1)"});
-      setTimeout(()=>c.remove(),dur);
-    }
-  }
-  // 派手版：金貨を大量に降らせつつ、中央から噴き上がるバーストも足す
-  function confettiBig(){
-    const cols=["#c08a24","#f2d271","#e4c25a","#a72e1b","#e9ddc4","#7c560f","#ffd966"];
-    const W=window.innerWidth, H=window.innerHeight;
-    // 上から大量に降る
-    for(let n=0;n<160;n++){ const c=document.createElement("div"); c.className="cft";
-      const big=Math.random()>.6; c.style.width=(big?12:8)+"px"; c.style.height=(big?18:12)+"px";
-      c.style.background=cols[n%cols.length]; c.style.left=(Math.random()*W)+"px"; c.style.borderRadius=Math.random()>.5?"2px":"50%";
-      slashfx.appendChild(c);
-      const dx=(Math.random()-.5)*200, dy=H+50, rot=Math.random()*900-450, dur=1600+Math.random()*1200;
-      c.animate([{transform:"translate(0,0)",opacity:1},{transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:1,offset:.85},{transform:`translate(${dx}px,${dy+30}px)`,opacity:0}],{duration:dur,easing:"cubic-bezier(.3,.6,.4,1)"});
-      setTimeout(()=>c.remove(),dur);
-    }
-    // 中央から噴き上がるバースト
-    const cx=W/2, cy=H*0.5;
-    for(let n=0;n<70;n++){ const c=document.createElement("div"); c.className="cft";
-      c.style.width="10px"; c.style.height="14px"; c.style.left=cx+"px"; c.style.top=cy+"px";
-      c.style.background=cols[n%cols.length]; c.style.borderRadius=Math.random()>.5?"2px":"50%";
-      slashfx.appendChild(c);
-      const ang=Math.random()*Math.PI*2, spd=200+Math.random()*380;
-      const dx=Math.cos(ang)*spd, dy=Math.sin(ang)*spd - 120, rot=Math.random()*720-360, dur=1100+Math.random()*800;
-      c.animate([{transform:"translate(0,0) rotate(0)",opacity:1},{transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:1,offset:.7},{transform:`translate(${dx*1.1}px,${dy+260}px) rotate(${rot}deg)`,opacity:0}],{duration:dur,easing:"cubic-bezier(.2,.7,.3,1)"});
-      setTimeout(()=>c.remove(),dur);
-    }
-  }
-
-  // ===== ログイン・認証 =====
-  function getToken(){ try{ return localStorage.getItem("voyage_token")||""; }catch(e){ return ""; } }
-  function setToken(t){ try{ localStorage.setItem("voyage_token", t); }catch(e){} }
-  function clearToken(){ try{ localStorage.removeItem("voyage_token"); }catch(e){} }
-  // APIにtokenを付けて送るための共通ヘッダ
-  function authHeaders(extra){
-    const h = Object.assign({}, extra||{});
-    const t = getToken(); if(t) h["Authorization"] = "Bearer " + t;
-    return h;
-  }
-  // マップに入る（ログイン後）
-  function enterMap(){
-    document.getElementById("screen-login").classList.add("hidden");
-    screenMap.classList.remove("hidden");
-    refreshProgress();
-    window.scrollTo(0,0);
-  }
-  // ログアウト → ログイン画面に戻る
-  async function doLogout(){
-    const t=getToken();
-    try{ await fetch("/api/auth/logout",{ method:"POST", headers: authHeaders() }); }catch(e){}
-    clearToken();
-    // 画面を全部隠して、ログイン画面へ
-    ["screen-map","screen-textbook","screen-submit","screen-battle"].forEach(id=>{
-      var el=document.getElementById(id); if(el) el.classList.add("hidden");
-    });
-    document.getElementById("submitted").classList.remove("show");
-    // ログイン画面へ
-    document.getElementById("login-name").value="";
-    document.getElementById("login-pass").value="";
-    var le=document.getElementById("login-err"); if(le) le.textContent="";
-    document.getElementById("screen-login").classList.remove("hidden");
-    window.scrollTo(0,0);
-  }
-  (function(){ var b=document.getElementById("logoutBtn"); if(b) b.onclick=doLogout; })();
-
-  (function initLogin(){
-    const nameEl=document.getElementById("login-name");
-    const passEl=document.getElementById("login-pass");
-    const errEl =document.getElementById("login-err");
-    const btn   =document.getElementById("login-submit");
-    if(!btn) return;
-
-    btn.onclick=async ()=>{
-      const name=(nameEl.value||"").trim();
-      const pass=passEl.value||"";
-      if(!name || !pass){ errEl.textContent="名前と合言葉を入れてください。"; return; }
-      btn.disabled=true; const orig=btn.textContent; btn.textContent="…";
-      try{
-        const r = await fetch("/api/auth/login",{ method:"POST", headers:{"content-type":"application/json"},
-          body: JSON.stringify({ name, password: pass }) });
-        const data = await r.json();
-        if(!data.ok){ errEl.textContent = data.error || "名前か合言葉が違います。"; btn.disabled=false; btn.textContent=orig; return; }
-        setToken(data.token);
-        enterMap();
-      }catch(e){
-        errEl.textContent = "通信に失敗しました。"; btn.disabled=false; btn.textContent=orig;
-      }
-    };
-    passEl.addEventListener("keydown",(e)=>{ if(e.key==="Enter") btn.click(); });
-  })();
-
-  // ===== 進捗表：DBを読んで表示する =====
-  function escapeHtmlS(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-  // STAGE1の単元名（今は4単元。増えたらここに足す）
-  // 全54単元の名前（命令形に統一。教科書を作るたび、内容はここと揃える）
-  const VOYAGE_INFO = {
-    // STAGE I：画像生成 入門
-    1: { roman:"I",    name:"狙ったお宝を掴め",       sub:"狙って絵を出す" },
-    2: { roman:"II",   name:"お題の獲物を仕留めろ",   sub:"お題どおりに作る" },
-    3: { roman:"III",  name:"細部まで狙い撃て",       sub:"細かい指定を再現" },
-    4: { roman:"IV",   name:"幾通りもの宝を描け",     sub:"同じお題で何案も出す" },
-    // STAGE II：画像を実務レベルに
-    5: { roman:"V",    name:"現の如く描き出せ",       sub:"リアル調・写真っぽく" },
-    6: { roman:"VI",   name:"商いの品を輝かせろ",     sub:"商品画像" },
-    7: { roman:"VII",  name:"相棒を創り出せ",         sub:"人物・キャラを作る" },
-    8: { roman:"VIII", name:"同じ顔を貫き通せ",       sub:"同じキャラを別ポーズで" },
-    9: { roman:"IX",   name:"一枚で語らせろ",         sub:"図解・インフォグラフィック" },
-    10:{ roman:"X",    name:"一部だけ描き直せ",       sub:"画像を部分修正" },
-    // STAGE III：デザイン成果物
-    11:{ roman:"XI",   name:"文字を絵に刻め",         sub:"文字入れ画像" },
-    12:{ roman:"XII",  name:"目を奪う一枚を掲げろ",   sub:"アイキャッチ・サムネ" },
-    13:{ roman:"XIII", name:"旗を掲げて売り込め",     sub:"バナー" },
-    14:{ roman:"XIV",  name:"己の紋章を鍛えろ",       sub:"ロゴ・アイコン" },
-    15:{ roman:"XV",   name:"紙の使者を放て",         sub:"名刺・チラシ" },
-    16:{ roman:"XVI",  name:"他人の色を盗み取れ",     sub:"テイスト／ブランド寄せ" },
-    17:{ roman:"XVII", name:"一式まとめて仕上げろ",   sub:"実務セット" },
-    // STAGE IV：動画・音声
-    18:{ roman:"XVIII",name:"絵に命を吹き込め",       sub:"AIで短い動画" },
-    19:{ roman:"XIX",  name:"静止した宝を動かせ",     sub:"画像を動かす" },
-    20:{ roman:"XX",   name:"縦の海で戦え",           sub:"ショート動画" },
-    21:{ roman:"XXI",  name:"声を宿らせろ",           sub:"AIナレーション・音声" },
-    22:{ roman:"XXII", name:"言葉を画面に焼き付けろ", sub:"字幕・テロップ" },
-    // STAGE V：AIライティング
-    23:{ roman:"XXIII",name:"長文の海を渡れ",         sub:"ブログ記事" },
-    24:{ roman:"XXIV", name:"探す者に見つけさせろ",   sub:"SEO記事" },
-    25:{ roman:"XXV",  name:"一撃で心を掴め",         sub:"SNS投稿・キャッチコピー" },
-    26:{ roman:"XXVI", name:"言葉で財を動かせ",       sub:"セールス文・LP文" },
-    27:{ roman:"XXVII",name:"文を届けて商いを生め",   sub:"メルマガ・営業メール" },
-    // STAGE VI：Web制作 入門
-    28:{ roman:"XXVIII",name:"絵を骨組みへ翻訳せよ",  sub:"デザインをコードに繋ぐ" },
-    29:{ roman:"XXIX", name:"一枚の頁を築け",         sub:"1枚のWebページ" },
-    30:{ roman:"XXX",  name:"見た目を整えよ",         sub:"色・余白・文字" },
-    31:{ roman:"XXXI", name:"小さき画面にも応えよ",   sub:"スマホ対応" },
-    // STAGE VII：LP・ホームページ
-    32:{ roman:"XXXII",name:"一枚で売り切れ",         sub:"LP（1枚もの）" },
-    33:{ roman:"XXXIII",name:"頁に波を立てろ",        sub:"LPに動きをつける" },
-    34:{ roman:"XXXIV",name:"館を建てよ",             sub:"複数ページのHP" },
-    35:{ roman:"XXXV", name:"道標を示せ",             sub:"メニュー・ナビ" },
-    36:{ roman:"XXXVI",name:"客の声を受け取れ",       sub:"お問い合わせフォーム" },
-    37:{ roman:"XXXVII",name:"世界の海へ出港せよ",    sub:"ネットに公開（デプロイ）" },
-    // STAGE VIII：アプリを作る
-    38:{ roman:"XXXVIII",name:"機械に呪文を書かせろ", sub:"コードを書かせて動かす" },
-    39:{ roman:"XXXIX",name:"仕掛けを動かせ",         sub:"入力・ボタン" },
-    40:{ roman:"XL",   name:"難破を自ら直せ",         sub:"エラーを読んで直させる" },
-    41:{ roman:"XLI",  name:"小舟を一隻造れ",         sub:"小さいアプリ" },
-    42:{ roman:"XLII", name:"宝を沈ませるな",         sub:"データを保存" },
-    43:{ roman:"XLIII",name:"門に鍵をかけろ",         sub:"ログイン機能" },
-    44:{ roman:"XLIV", name:"他船と手を組め",         sub:"外部サービスと繋ぐ（API）" },
-    // STAGE IX：AI活用・自動化
-    45:{ roman:"XLV",  name:"語る従者を作れ",         sub:"チャットボット" },
-    46:{ roman:"XLVI", name:"己の海図を読ませろ",     sub:"自分のデータに答えるAI" },
-    47:{ roman:"XLVII",name:"手仕事を機械に渡せ",     sub:"業務自動化ツール" },
-    48:{ roman:"XLVIII",name:"知恵を仕込め",          sub:"AIを組み込んだ機能" },
-    // STAGE X：収益化・卒業制作
-    49:{ roman:"XLIX", name:"金貨を受け取れ",         sub:"ネットショップ・決済" },
-    50:{ roman:"L",    name:"客の刻を押さえろ",       sub:"予約システム" },
-    51:{ roman:"LI",   name:"己の王国を構想せよ",     sub:"自分のSaaSを企画" },
-    52:{ roman:"LII",  name:"王国を建国せよ",         sub:"作って公開（本番）" },
-    53:{ roman:"LIII", name:"民を呼び寄せろ",         sub:"集客・人に使ってもらう" },
-    54:{ roman:"LIV",  name:"王国を磨き上げろ",       sub:"分析して改善・仕上げ" },
-  };
-  const STAGE1_VOYAGES = [1,2,3,4];
-
-  function badgeFor(state){
-    if(state==="approved") return '<span class="vlog-badge b-clear">✓ CLEAR</span>';
-    if(state==="pending")  return '<span class="vlog-badge b-wait">⚓ 検分中</span>';
-    if(state==="rejected") return '<span class="vlog-badge b-reject">⚠ 差し戻し</span>';
-    if(state==="unlocked") return '<span class="vlog-badge b-open">⚔ 挑戦中</span>';
-    return '<span class="vlog-badge b-lock">🔒</span>'; // locked
-  }
-  function rowClassFor(state){
-    if(state==="approved") return "cleared";
-    if(state==="pending")  return "waiting";
-    if(state==="rejected") return "rejected";
-    if(state==="unlocked") return "open";
-    return "locked";
-  }
-
-  // ★どの島の進捗表を出すか★（島パネルから開いた島。無ければ最初の島）
-  let logNode = null;
-
-  async function refreshProgress(){
-    const listEl = document.getElementById("vlog-list");
-    if(!listEl) return;
-    // 表示する島（指定がなければ、現在地の島＝はじまりの入り江）
-    const node = logNode || MAP_NODES[0];
-    const vs = (node && node.vs) ? node.vs : STAGE1_VOYAGES;
-    // 見出しをその島に合わせる
-    const stageEl = document.querySelector(".vlog-stage");
-    const islandEl = document.querySelector(".vlog-island");
-    if(stageEl && node){
-      // v は "STAGE II ・ 画像を実務レベルに" の形。STAGE名だけ取り出す
-      const m = String(node.v||"").split("・")[0].trim();
-      stageEl.textContent = m || "STAGE";
-    }
-    if(islandEl && node) islandEl.textContent = node.name || "";
-
-    let prog=null;
-    try{
-      const r=await fetch("/api/progress",{ headers: authHeaders() });
-      if(!r.ok) return;
-      prog=await r.json();
-    }catch(e){ return; }
-    // voyage番号→stateの辞書に
-    const stateOf={};
-    (prog.voyages||[]).forEach(v=>{ stateOf[v.voyage]=v.state; });
-    // ★その島の単元だけ描く★
-    listEl.innerHTML = vs.map(v=>{
-      const info=VOYAGE_INFO[v]; if(!info) return "";
-      const vo = (prog.voyages||[]).find(x=>x.voyage===v) || {};
-      const st = stateOf[v]||"locked";
-      const comment = (st==="rejected" && vo.comment) ? vo.comment : "";
-      return `<li class="vlog-item ${rowClassFor(st)}">
-        <span class="vlog-no">${info.roman}</span>
-        <span class="vlog-name">${info.name}<span class="vlog-sub">${info.sub}</span></span>
-        ${badgeFor(st)}
-      </li>` + (comment ? `<li class="vlog-comment">📜 親方より：${escapeHtmlS(comment)}</li>` : "");
-    }).join("");
-  }
-  // 起動時に一度読み込んでおく
-  refreshProgress();
-
-  // ===== iframe（プロローグ・教科書）からの通知を受け取る =====
-  window.addEventListener("message", function(ev){
-    if(ev.data === "startAdventure"){
-      // プロローグ「冒険を始める」→ ログイン画面へ（未ログインなら）
-      document.getElementById("screen-prologue").classList.add("hidden");
-      if(getToken()){ enterMap(); }               // 既にログイン済みなら直接マップ
-      else { document.getElementById("screen-login").classList.remove("hidden"); }
-      window.scrollTo(0,0);
-    } else if(ev.data === "toQuest"){
-      // 教科書「課題に挑む」→ 提出画面へ
-      goToSubmitFromTextbook();
-    } else if(ev.data === "backToMap"){
-      // 教科書「航海図へ戻る」→ マップへ
-      document.getElementById("screen-textbook").classList.add("hidden");
-      screenSubmit.classList.add("hidden");
-      screenMap.classList.remove("hidden");
-      window.scrollTo(0,0);
-    }
-  });
+  var t=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){ t.classList.toggle('is-show',window.scrollY>400); });
+  t.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
 </script>
 </body>
 </html>
