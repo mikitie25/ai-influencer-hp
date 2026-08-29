@@ -3,7 +3,10 @@
   <url><loc>__SITE_URL__/</loc><priority>1.0</priority></url>
   <url><loc>__SITE_URL__/securedev.html</loc><priority>0.9</priority></url>
   <url><loc>__SITE_URL__/development.html</loc><priority>0.9</priority></url>
+  <url><loc>__SITE_URL__/works.html</loc><priority>0.8</priority></url>
+  <url><loc>__SITE_URL__/voice.html</loc><priority>0.8</priority></url>
   <url><loc>__SITE_URL__/service.html</loc><priority>0.8</priority></url>
+  <url><loc>__SITE_URL__/message.html</loc><priority>0.7</priority></url>
   <url><loc>__SITE_URL__/about.html</loc><priority>0.8</priority></url>
   <url><loc>__SITE_URL__/contact.html</loc><priority>0.8</priority></url>
   <url><loc>__SITE_URL__/privacy.html</loc><priority>0.3</priority></url>

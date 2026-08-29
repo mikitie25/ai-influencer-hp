@@ -914,3 +914,43 @@ a,button{ -webkit-tap-highlight-color:rgba(47,111,208,.18); }
 @media(max-width:640px){
   .stat{ flex:1 1 100%; padding:30px 22px; }
 }
+
+/* =========================================================
+   お客様の声
+   ========================================================= */
+.h-voice{ background-image:url("images/works-head.jpg"); }
+
+.voices{ display:flex; flex-direction:column; gap:26px; }
+.voice{
+  background:#fff; border:1px solid var(--line); border-radius:20px;
+  padding:36px 38px; position:relative;
+}
+.voice::before{
+  content:"“"; position:absolute; left:26px; top:8px;
+  font-family:"Montserrat",serif; font-size:64px; line-height:1;
+  color:rgba(47,111,208,.16); font-weight:800;
+}
+.voice-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; padding-left:34px; }
+.voice-tag{
+  font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:999px;
+  background:var(--bg-2); color:var(--navy); border:1px solid var(--line);
+}
+.voice-tag.is-listed{
+  background:linear-gradient(100deg,rgba(47,111,208,.10),rgba(127,212,232,.14));
+  border-color:rgba(47,111,208,.32); color:var(--blue);
+}
+.voice h3{ font-size:18px; margin-bottom:14px; padding-left:34px; line-height:1.6; }
+.voice-body{ padding-left:34px; }
+.voice-body p{ font-size:14.5px; color:var(--ink); line-height:2.05; margin-bottom:14px; }
+.voice-body p:last-child{ margin-bottom:0; }
+.voice-from{
+  margin-top:22px; padding-top:16px; border-top:1px solid var(--line-2);
+  margin-left:34px; font-size:13px; color:var(--gray);
+}
+.voice-from b{ color:var(--navy); font-weight:700; }
+@media(max-width:720px){
+  .voice{ padding:28px 22px; }
+  .voice::before{ left:16px; font-size:48px; }
+  .voice-tags,.voice h3,.voice-body{ padding-left:22px; }
+  .voice-from{ margin-left:22px; }
+}
