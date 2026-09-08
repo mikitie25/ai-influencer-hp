@@ -4,3 +4,7 @@ contact.db-journal
 .env
 .DS_Store
 npm-debug.log*
+securedev_bk.html
+*_bk.html
+*_backup.html
+*_now.html
