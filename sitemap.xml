@@ -10,5 +10,4 @@
   <url><loc>__SITE_URL__/about.html</loc><priority>0.8</priority></url>
   <url><loc>__SITE_URL__/contact.html</loc><priority>0.8</priority></url>
   <url><loc>__SITE_URL__/privacy.html</loc><priority>0.3</priority></url>
-  <url><loc>__SITE_URL__/legal.html</loc><priority>0.3</priority></url>
 </urlset>
