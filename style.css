@@ -1034,3 +1034,24 @@ a,button{ -webkit-tap-highlight-color:rgba(47,111,208,.18); }
   .pillars{ grid-template-columns:1fr; gap:20px; }
   .pillar{ padding:30px 24px 26px; }
 }
+
+/* =========================================================
+   スマートフォンでの見出しの折り返し
+   PCで入れている改行が、狭い画面では不自然な位置になるため
+   ========================================================= */
+@media(max-width:600px){
+  .sec-h h2 br,
+  .page-head h1 br,
+  .hero-copy .hero-h br,
+  .ceo-lead br,
+  .cta-band h2 br,
+  .plan h3 br{
+    display:none;
+  }
+  /* 語の途中で折れないようにする */
+  .sec-h h2, .hero-copy .hero-h, .ceo-lead, .cta-band h2{
+    word-break:normal;
+    overflow-wrap:break-word;
+    line-break:strict;
+  }
+}
